@@ -5,6 +5,7 @@
 
 package othello;
 
+
 /**
  *
  * @author andre
@@ -16,7 +17,16 @@ public class Main {
      */
     public static void main(String[] args)
     {
-        System.out.println("test commit");
+        // création d'un plateau
+        Plateau plateau = new Plateau();
+        //déclaration des joueurs
+        Joueur joueur1=new Joueur(Couleur.NOIR, plateau,TypeJoueur.HUMAIN);
+        Joueur joueur2=new Joueur(Couleur.BLANC, plateau, TypeJoueur.AUTOMATE);
+        //création de l'IHM du plateau
+        IHMplateau ihm = new IHMplateau(plateau,joueur1,joueur2);
+        //association de l'IHM au plateau
+        plateau.setInterface(ihm);
+
     }
 
 }
