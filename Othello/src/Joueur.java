@@ -7,11 +7,26 @@
  *
  * @author ntomio
  */
-class Joueur
+class Joueur implements InterfaceJoueur
 {
 
     public Joueur(Couleur NOIR, Plateau plateau, TypeJoueur HUMAIN)
     {
+    }
+
+    public Coup joue()
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public TypeJoueur getType()
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Couleur getCouleur()
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }
