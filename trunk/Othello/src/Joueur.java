@@ -10,8 +10,12 @@
 class Joueur implements InterfaceJoueur
 {
 
-    public Joueur(Couleur NOIR, Plateau plateau, TypeJoueur HUMAIN)
+    private Couleur couleur;
+    private TypeJoueur typeJoueur;
+    
+    public Joueur(Couleur couleur, Plateau plateau, TypeJoueur typeJoueur)
     {
+        this.couleur = couleur;
     }
 
     public Coup joue()
@@ -21,12 +25,12 @@ class Joueur implements InterfaceJoueur
 
     public TypeJoueur getType()
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return typeJoueur;
     }
 
     public Couleur getCouleur()
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return couleur;
     }
     
 }
