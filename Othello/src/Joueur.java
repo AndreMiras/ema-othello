@@ -11,11 +11,13 @@ class Joueur implements InterfaceJoueur
 {
 
     private Couleur couleur;
+    private Plateau plateau;
     private TypeJoueur typeJoueur;
     
     public Joueur(Couleur couleur, Plateau plateau, TypeJoueur typeJoueur)
     {
         this.couleur = couleur;
+        this.plateau = plateau;
     }
 
     public Coup joue()
