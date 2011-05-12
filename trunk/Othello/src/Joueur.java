@@ -18,10 +18,12 @@ class Joueur implements InterfaceJoueur
     {
         this.couleur = couleur;
         this.plateau = plateau;
+        this.typeJoueur = typeJoueur;
     }
 
     public Coup joue()
     {
+        // return new Coup(3, 2);
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
