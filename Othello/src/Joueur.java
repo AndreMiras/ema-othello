@@ -31,10 +31,9 @@ class Joueur implements InterfaceJoueur
         {
             System.out.println("Ligne : " + tabCouleurAdverse.get(i).getLigne() + " Colonne : " + tabCouleurAdverse.get(i).getColonne());
         }*/
-        
+
+
         ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(1));
-        System.out.println("La ligne du pion est : " + tabCaseVide.get(1).getLigne());
-        System.out.println("La colone du pion est : " + tabCaseVide.get(1).getColonne());
         for(int i=0;i<tabCaseVide.size();i++)
         {
             System.out.println("Ligne : " + tabCaseVide.get(i).getLigne() + " Colonne : " + tabCaseVide.get(i).getColonne());
@@ -68,12 +67,16 @@ class Joueur implements InterfaceJoueur
     {
         ArrayList<Coup> tabCaseVide = new ArrayList<Coup>();
         Couleur[][] matricePlateau = this.plateau.getMatricePlateau();
-        
-        for(int i=coup.getLigne()-1; i<=coup.getLigne()+1; i++)
+        int lignePrecedente = coup.getLigne()-1;
+        int ligneSuivante = coup.getLigne()+1;
+        int colonnePrecedente = coup.getColonne()-1;
+        int colonneSuivante = coup.getColonne()+1;
+
+        for(int i=lignePrecedente; i<=ligneSuivante; i++)
         {
-            for(int j=coup.getColonne()-1; j<=coup.getColonne()+1; i++)
+            for(int j=colonnePrecedente; j<=colonneSuivante; j++)
             {
-                if(matricePlateau[i][j] == Couleur.VIDE)
+                 if(matricePlateau[i][j] == Couleur.VIDE)
                 {
                     tabCaseVide.add(new Coup(i, j));
                 }
