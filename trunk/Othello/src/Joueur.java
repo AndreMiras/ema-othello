@@ -39,8 +39,8 @@ class Joueur implements InterfaceJoueur
             System.out.println("Ligne : " + tabCaseVide.get(i).getLigne() + " Colonne : " + tabCaseVide.get(i).getColonne());
         }
         
-        // return new Coup(3, 2);
-        throw new UnsupportedOperationException("Not supported yet.");
+         return new Coup(4, 2);
+        //throw new UnsupportedOperationException("Not supported yet.");
     }
    
     
