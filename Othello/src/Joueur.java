@@ -26,11 +26,24 @@ class Joueur implements InterfaceJoueur
 
     public Coup joue()
     {
-
+        ArrayList<Coup> tabCouleurAdverse = chercheCouleurAdverse();
+        /*for(int i=0;i<tabCouleurAdverse.size();i++)
+        {
+            System.out.println("Ligne : " + tabCouleurAdverse.get(i).getLigne() + " Colonne : " + tabCouleurAdverse.get(i).getColonne());
+        }*/
+        
+        ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(1));
+        System.out.println("La ligne du pion est : " + tabCaseVide.get(1).getLigne());
+        System.out.println("La colone du pion est : " + tabCaseVide.get(1).getColonne());
+        for(int i=0;i<tabCaseVide.size();i++)
+        {
+            System.out.println("Ligne : " + tabCaseVide.get(i).getLigne() + " Colonne : " + tabCaseVide.get(i).getColonne());
+        }
+        
         // return new Coup(3, 2);
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+   
     
     //Fonction qui retourne la position des pions de couleurs adverses
     private ArrayList<Coup> chercheCouleurAdverse()
@@ -48,6 +61,25 @@ class Joueur implements InterfaceJoueur
             }
         }
         return tabCouleurAdverse;
+    }
+    
+    //Fonction qui cherche les cases vides autour d'un pion passé en paramètre
+    private ArrayList<Coup> chercheVideAutour (Coup coup)
+    {
+        ArrayList<Coup> tabCaseVide = new ArrayList<Coup>();
+        Couleur[][] matricePlateau = this.plateau.getMatricePlateau();
+        
+        for(int i=coup.getLigne()-1; i<=coup.getLigne()+1; i++)
+        {
+            for(int j=coup.getColonne()-1; j<=coup.getColonne()+1; i++)
+            {
+                if(matricePlateau[i][j] == Couleur.VIDE)
+                {
+                    tabCaseVide.add(new Coup(i, j));
+                }
+            }
+        }
+        return tabCaseVide;
     }
 
    
