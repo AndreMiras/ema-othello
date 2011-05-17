@@ -6,10 +6,6 @@ import java.util.ArrayList;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author ntomio
- */
 class Joueur implements InterfaceJoueur
 {
 
