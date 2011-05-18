@@ -4,12 +4,6 @@
  */
 
 
-
-
-/**
- *
- * @author andre
- */
 public class Main {
 
     /**

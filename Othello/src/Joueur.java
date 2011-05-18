@@ -23,13 +23,15 @@ class Joueur implements InterfaceJoueur
     public Coup joue()
     {
         ArrayList<Coup> tabCouleurAdverse = chercheCouleurAdverse();
-        /*for(int i=0;i<tabCouleurAdverse.size();i++)
+        System.out.println("Couleur adverse :");
+        for(int i=0;i<tabCouleurAdverse.size();i++)
         {
             System.out.println("Ligne : " + tabCouleurAdverse.get(i).getLigne() + " Colonne : " + tabCouleurAdverse.get(i).getColonne());
-        }*/
+        }
 
 
         ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(1));
+        System.out.println("Le pion ciblé est ligne : " + tabCouleurAdverse.get(1).getLigne() + " colonne : " + tabCouleurAdverse.get(1).getColonne());
         for(int i=0;i<tabCaseVide.size();i++)
         {
             System.out.println("Ligne : " + tabCaseVide.get(i).getLigne() + " Colonne : " + tabCaseVide.get(i).getColonne());
@@ -44,12 +46,11 @@ class Joueur implements InterfaceJoueur
     private ArrayList<Coup> chercheCouleurAdverse()
     {
         ArrayList<Coup> tabCouleurAdverse = new ArrayList<Coup>();
-        Couleur[][] matricePlateau = this.plateau.getMatricePlateau();
-        for(int i=0; i<8; i++)
+                for(int i=0; i<plateau.getDimension(); i++)
         {
             for(int j=0; j<8; j++)
             {
-                if (matricePlateau[i][j]!=this.couleur && matricePlateau[i][j]!=Couleur.VIDE)
+                if (plateau.plateau[i][j]!=this.couleur && plateau.plateau[i][j]!=Couleur.VIDE)
                 {
                     tabCouleurAdverse.add(new Coup(i, j));
                 }
@@ -70,9 +71,13 @@ class Joueur implements InterfaceJoueur
 
         for(int i=lignePrecedente; i<=ligneSuivante; i++)
         {
+                if(i<0){break;}
+                if(i>=plateau.getDimension()){break;}
             for(int j=colonnePrecedente; j<=colonneSuivante; j++)
             {
-                 if(matricePlateau[i][j] == Couleur.VIDE)
+                if(j<0){break;}
+                if(j>=plateau.getDimension()){break;}
+                if(matricePlateau[i][j] == Couleur.VIDE)
                 {
                     tabCaseVide.add(new Coup(i, j));
                 }
@@ -80,8 +85,22 @@ class Joueur implements InterfaceJoueur
         }
         return tabCaseVide;
     }
-
-   
+    
+    private ArrayList<Coup> chercheCoupPossible ()
+    {
+        ArrayList<Coup> coupPossible = new ArrayList<Coup>();
+        ArrayList<Coup> tabCouleurAdverse = chercheCouleurAdverse();
+        for(int i=0;i<tabCouleurAdverse.size();i++)
+        {
+            
+        }
+        
+        
+        
+        ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(1));
+        return coupPossible;
+    }
+    
     
     public TypeJoueur getType()
     {
