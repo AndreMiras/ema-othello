@@ -96,45 +96,23 @@ class Joueur implements InterfaceJoueur
         ArrayList<Coup> coupPossible = new ArrayList<Coup>();
         int x = 0; //Variable qui determine la direction horizontale
         int y = 0; //Variable qui determine la direction verticale
+        //Variables pour analyser les cases
         int pointX;
         int pointY;
         //On récupère les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse = chercheCouleurAdverse();
+
         //On fait un traitement pour chaque pion du tableau
-       
         for(int i=0;i<tabCouleurAdverse.size();i++)
         {
             ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(i));
             for (int j=0; j<tabCaseVide.size();j++)
             {
-                //On cherche la direction en x et y
-                //3 cas possibles pour x
-                if(tabCaseVide.get(j).getColonne()-tabCouleurAdverse.get(i).getColonne()==-1)
-                {
-                    x=1;
-                }
-                if(tabCaseVide.get(j).getColonne()-tabCouleurAdverse.get(i).getColonne()==0)
-                {
-                    x=0;
-                }
-                if(tabCaseVide.get(j).getColonne()-tabCouleurAdverse.get(i).getColonne()==1)
-                {
-                    x=-1;
-                }
-                //3 cas possibles pour y
-                if(tabCaseVide.get(j).getLigne()-tabCouleurAdverse.get(i).getLigne()==-1)
-                {
-                    y=1;
-                }
-                if(tabCaseVide.get(j).getLigne()-tabCouleurAdverse.get(i).getLigne()==0)
-                {
-                    y=0;
-                }
-                if(tabCaseVide.get(j).getLigne()-tabCouleurAdverse.get(i).getLigne()==1)
-                {
-                    y=-1;
-                }
+                //On cherche la direction en x et y                 
+                x=-(tabCaseVide.get(j).getColonne()-tabCouleurAdverse.get(i).getColonne());
+                y=-(tabCaseVide.get(j).getLigne()-tabCouleurAdverse.get(i).getLigne());
 
+                //On fixe la case à traiter
                 pointX = tabCouleurAdverse.get(i).getColonne()+x;
                 pointY = tabCouleurAdverse.get(i).getLigne()+y;
                 //On boucle tant qu'on est dans le tableau
@@ -152,6 +130,7 @@ class Joueur implements InterfaceJoueur
                     {
                         break;
                     }
+                    //On déplace la case à traiter
                     pointX=pointX+x;
                     pointY=pointY+y;
                 }
