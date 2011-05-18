@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /*
  * To change this template, choose Tools | Templates
@@ -22,22 +23,21 @@ class Joueur implements InterfaceJoueur
 
     public Coup joue()
     {
-        ArrayList<Coup> tabCouleurAdverse = chercheCouleurAdverse();
-        System.out.println("Couleur adverse :");
-        for(int i=0;i<tabCouleurAdverse.size();i++)
-        {
-            System.out.println("Ligne : " + tabCouleurAdverse.get(i).getLigne() + " Colonne : " + tabCouleurAdverse.get(i).getColonne());
-        }
-
-
-        ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(1));
-        System.out.println("Le pion ciblé est ligne : " + tabCouleurAdverse.get(1).getLigne() + " colonne : " + tabCouleurAdverse.get(1).getColonne());
-        for(int i=0;i<tabCaseVide.size();i++)
-        {
-            System.out.println("Ligne : " + tabCaseVide.get(i).getLigne() + " Colonne : " + tabCaseVide.get(i).getColonne());
-        }
         
-         return new Coup(4, 2);
+        System.out.println("Coup possible : ");
+        ArrayList<Coup> coupPossible = chercheCoupPossible();
+        
+        for (int i=0;i<coupPossible.size();i++)
+        {
+            System.out.println("Ligne : " + coupPossible.get(i).getLigne() + " Colonne : " + coupPossible.get(i).getColonne());
+        }
+
+        Random r = new Random();
+        int valeur = 0 + r.nextInt(coupPossible.size() - 0);
+       
+        Coup coup = coupPossible.get(valeur);
+        return coup;
+        //return new Coup(4, 2);
         //throw new UnsupportedOperationException("Not supported yet.");
     }
    
@@ -45,13 +45,17 @@ class Joueur implements InterfaceJoueur
     //Fonction qui retourne la position des pions de couleurs adverses
     private ArrayList<Coup> chercheCouleurAdverse()
     {
+        //Tableau dans lequel on va stockée les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse = new ArrayList<Coup>();
-                for(int i=0; i<plateau.getDimension(); i++)
+        //On parcourt le tableau
+        for(int i=0; i<plateau.getDimension(); i++)
         {
-            for(int j=0; j<8; j++)
+            for(int j=0; j<plateau.getDimension(); j++)
             {
+                //Si la couleur correspond au joueur adverse
                 if (plateau.plateau[i][j]!=this.couleur && plateau.plateau[i][j]!=Couleur.VIDE)
                 {
+                    //On l'ajoute au tableau
                     tabCouleurAdverse.add(new Coup(i, j));
                 }
             }
@@ -88,16 +92,72 @@ class Joueur implements InterfaceJoueur
     
     private ArrayList<Coup> chercheCoupPossible ()
     {
+        //Tableau dans lequel seront stockés les coups possibles
         ArrayList<Coup> coupPossible = new ArrayList<Coup>();
+        int x = 0; //Variable qui determine la direction horizontale
+        int y = 0; //Variable qui determine la direction verticale
+        int pointX;
+        int pointY;
+        //On récupère les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse = chercheCouleurAdverse();
+        //On fait un traitement pour chaque pion du tableau
+       
         for(int i=0;i<tabCouleurAdverse.size();i++)
         {
-            
-        }
-        
-        
-        
-        ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(1));
+            ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(i));
+            for (int j=0; j<tabCaseVide.size();j++)
+            {
+                //On cherche la direction en x et y
+                //3 cas possibles pour x
+                if(tabCaseVide.get(j).getColonne()-tabCouleurAdverse.get(i).getColonne()==-1)
+                {
+                    x=1;
+                }
+                if(tabCaseVide.get(j).getColonne()-tabCouleurAdverse.get(i).getColonne()==0)
+                {
+                    x=0;
+                }
+                if(tabCaseVide.get(j).getColonne()-tabCouleurAdverse.get(i).getColonne()==1)
+                {
+                    x=-1;
+                }
+                //3 cas possibles pour y
+                if(tabCaseVide.get(j).getLigne()-tabCouleurAdverse.get(i).getLigne()==-1)
+                {
+                    y=1;
+                }
+                if(tabCaseVide.get(j).getLigne()-tabCouleurAdverse.get(i).getLigne()==0)
+                {
+                    y=0;
+                }
+                if(tabCaseVide.get(j).getLigne()-tabCouleurAdverse.get(i).getLigne()==1)
+                {
+                    y=-1;
+                }
+
+                pointX = tabCouleurAdverse.get(i).getColonne()+x;
+                pointY = tabCouleurAdverse.get(i).getLigne()+y;
+                //On boucle tant qu'on est dans le tableau
+                while(pointX>0 && pointX<plateau.getDimension() && pointY>0 && pointY<plateau.getDimension())
+                {
+                    //On cherche une case de la couleur du joueur, si on en trouve
+                    //une, c'est un coup possible
+                    if(plateau.plateau[pointX][pointY] == this.couleur)
+                    {
+                        coupPossible.add(new Coup(tabCaseVide.get(j).getLigne(), tabCaseVide.get(j).getColonne()));
+                        break;
+                    }
+                    //Si on tombe sur une case vide, on sort de la boucle
+                    if(plateau.plateau[pointX][pointY] == Couleur.VIDE)
+                    {
+                        break;
+                    }
+                    pointX=pointX+x;
+                    pointY=pointY+y;
+                }
+            }
+        }  
+             
         return coupPossible;
     }
     
