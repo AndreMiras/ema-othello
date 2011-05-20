@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import java.util.Random;
+import tadarbrenaire.*;
+
 
 /*
  * To change this template, choose Tools | Templates
@@ -189,6 +191,54 @@ class Joueur implements InterfaceJoueur
              
         return coupPossible;
     }
+    
+    /*
+     * Creation de l'arbre
+     * TODO: finish up
+     */
+     public static ArbreNaire buildArbreMaClasseRec(ArbreNaire<MaClasse> arbre, int profondeur, int largeur)
+    {
+        Double tmpDouble;
+        Integer tmpInteger;
+        MaClasse tmpMaClasse;
+
+        /* Feuille */
+        if (profondeur == 1)
+        {
+            for(int i = 0; i < largeur; i ++)
+           {
+               /*
+               tmpInteger = arbre.vue.getInfo().getIdent() * 10;
+               tmpInteger += i;
+               tmpMaClasse = new MaClasse(tmpInteger);
+               tmpMaClasse.setValRandomHeuristique();
+               arbre.addFils(tmpMaClasse);
+                * 
+                */
+           }
+        }
+        else
+        {
+            for (int i = 0; i < largeur; i++)
+            {
+                /*
+                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
+                tmpInteger += i;
+                tmpMaClasse = new MaClasse(tmpInteger);
+                arbre.addFils(tmpMaClasse);
+                arbre.goToFils(i);
+                buildArbreMaClasseRec(arbre, profondeur - 1, largeur);
+                arbre.goToPere();
+                * 
+                */
+            }
+        }
+        return arbre;
+    }
+    
+    
+    
+    
     
     
     public TypeJoueur getType()
