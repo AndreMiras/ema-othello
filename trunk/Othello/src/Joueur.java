@@ -85,21 +85,51 @@ class Joueur implements InterfaceJoueur
         int colonnePrecedente = coup.getColonne()-1;
         int colonneSuivante = coup.getColonne()+1;
 
+        int ligne;
+        int colonne;
+        boolean lignePossible = true;
+        boolean colonnePossible = true;
         
-       for(int i=lignePrecedente; i<=ligneSuivante; i++)
+        
+        ligne = lignePrecedente;
+        while (ligne<=ligneSuivante && lignePossible)
         {
-                if(i<0){break;}
-                if(i>=plateau.getDimension()){break;}
-            for(int j=colonnePrecedente; j<=colonneSuivante; j++)
+            if(ligne<0)
             {
-                if(j<0){break;}
-                if(j>=plateau.getDimension()){break;}
-                if(matricePlateau[i][j] == Couleur.VIDE)
-                {
-                    tabCaseVide.add(new Coup(i, j));
-                }
+                lignePossible=false;
             }
+            else if(ligne >=plateau.getDimension())
+            {
+                lignePossible=false;
+            }
+            else
+            {
+               colonnePossible=true;
+               colonne = colonnePrecedente;
+               while (colonne<=colonneSuivante && colonnePossible)
+               {
+                   
+                   if(colonne<0)
+                   {
+                       colonnePossible=false;
+                   }
+                   else if(colonne >= plateau.getDimension())
+                   {
+                       colonnePossible=false;
+                   }
+                   else
+                   {
+                        if(matricePlateau[ligne][colonne] == Couleur.VIDE)
+                        {
+                            tabCaseVide.add(new Coup(ligne, colonne));
+                        }
+                   }
+                   colonne++;
+               }
+            }
+            ligne++;
         }
+ 
 
         return tabCaseVide;
     }
