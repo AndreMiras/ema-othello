@@ -141,10 +141,12 @@ class Joueur implements InterfaceJoueur
         int x = 0; //Variable qui determine la direction horizontale
         int y = 0; //Variable qui determine la direction verticale
         //Variables pour analyser les cases
-        int pointX;
-        int pointY;
+        int pointLigne;
+        int pointColonne;
         //On récupère les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse = chercheCouleurAdverse();
+        
+        Couleur[][] matricePlateau = this.plateau.getMatricePlateau();
         
         //Condition pour sortir de boucle
         boolean flag = true;
@@ -160,27 +162,27 @@ class Joueur implements InterfaceJoueur
                 y=-(tabCaseVide.get(j).getLigne()-tabCouleurAdverse.get(i).getLigne());
 
                 //On fixe la case à traiter
-                pointX = tabCouleurAdverse.get(i).getColonne()+x;
-                pointY = tabCouleurAdverse.get(i).getLigne()+y;
+                pointColonne = tabCouleurAdverse.get(i).getColonne()+x;
+                pointLigne = tabCouleurAdverse.get(i).getLigne()+y;
                 //On boucle tant qu'on est dans le tableau
                 flag = true;
-                while(pointX>0 && pointX<plateau.getDimension() && pointY>0 && pointY<plateau.getDimension() && flag==true)
+                while(pointColonne>0 && pointColonne<plateau.getDimension() && pointLigne>0 && pointLigne<plateau.getDimension() && flag==true)
                 {
                     //On cherche une case de la couleur du joueur, si on en trouve
                     //une, c'est un coup possible
-                    if(plateau.plateau[pointX][pointY] == this.couleur)
+                    if(matricePlateau[pointLigne][pointColonne] == this.couleur)
                     {
                         coupPossible.add(new Coup(tabCaseVide.get(j).getLigne(), tabCaseVide.get(j).getColonne()));
                         flag=false;
                     }
                     //Si on tombe sur une case vide, on sort de la boucle
-                    if(plateau.plateau[pointX][pointY] == Couleur.VIDE)
+                    if(matricePlateau[pointColonne][pointLigne] == Couleur.VIDE)
                     {
                         flag=false;
                     }
                     //On déplace la case à traiter
-                    pointX=pointX+x;
-                    pointY=pointY+y;
+                    pointColonne=pointColonne+x;
+                    pointLigne=pointLigne+y;
                 }
             }
         }  
