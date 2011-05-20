@@ -78,26 +78,28 @@ class Joueur implements InterfaceJoueur
     private ArrayList<Coup> chercheVideAutour (Coup coup)
     {
         ArrayList<Coup> tabCaseVide = new ArrayList<Coup>();
-        //Couleur[][] matricePlateau = this.plateau.getMatricePlateau();
+        Couleur[][] matricePlateau = this.plateau.getMatricePlateau();
         int lignePrecedente = coup.getLigne()-1;
         int ligneSuivante = coup.getLigne()+1;
         int colonnePrecedente = coup.getColonne()-1;
         int colonneSuivante = coup.getColonne()+1;
 
-        if(lignePrecedente >=0 && ligneSuivante < plateau.getDimension()
-                && colonnePrecedente >=0 && colonneSuivante < plateau.getDimension())
-        {    
-            for(int i=lignePrecedente; i<=ligneSuivante; i++)
+        
+       for(int i=lignePrecedente; i<=ligneSuivante; i++)
+        {
+                if(i<0){break;}
+                if(i>=plateau.getDimension()){break;}
+            for(int j=colonnePrecedente; j<=colonneSuivante; j++)
             {
-                for(int j=colonnePrecedente; j<=colonneSuivante; j++)
+                if(j<0){break;}
+                if(j>=plateau.getDimension()){break;}
+                if(matricePlateau[i][j] == Couleur.VIDE)
                 {
-                    if(plateau.plateau[i][j] == Couleur.VIDE)
-                    {
-                        tabCaseVide.add(new Coup(i, j));
-                    }
+                    tabCaseVide.add(new Coup(i, j));
                 }
             }
         }
+
         return tabCaseVide;
     }
     
