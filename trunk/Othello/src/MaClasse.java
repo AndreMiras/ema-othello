@@ -28,7 +28,7 @@ public class MaClasse {
 
     
 
-    public Plateau getIdent()
+    public Plateau getPlateau()
     {
         return plateau;
     }
