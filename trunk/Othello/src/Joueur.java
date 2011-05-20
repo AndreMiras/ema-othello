@@ -36,23 +36,10 @@ class Joueur implements InterfaceJoueur
         Random r = new Random();
 
       
-        int valeur;
-        try
-        {
-            valeur = r.nextInt(coupPossible.size());
-        }
-        catch(java.lang.IllegalArgumentException e)
-        {
-            int foo = coupPossible.size();
-            System.out.println("fou: "+ foo);
-            coupPossible = chercheCoupPossible();
-            valeur = 0;
-        }
+        int valeur = r.nextInt(coupPossible.size());
        
         Coup coup = coupPossible.get(valeur);
         return coup;
-        //return new Coup(4, 2);
-        //throw new UnsupportedOperationException("Not supported yet.");
     }
    
     
