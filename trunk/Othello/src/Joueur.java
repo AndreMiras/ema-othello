@@ -43,6 +43,7 @@ class Joueur implements InterfaceJoueur
         {
             int foo = coupPossible.size();
             System.out.println("fou: "+ foo);
+            coupPossible = chercheCoupPossible();
             valeur = 0;
         }
        
