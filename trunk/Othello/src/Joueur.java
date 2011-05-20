@@ -23,7 +23,6 @@ class Joueur implements InterfaceJoueur
 
     public Coup joue()
     {
-        
         System.out.println("Coup possible : ");
         ArrayList<Coup> coupPossible = chercheCoupPossible();
         
@@ -33,7 +32,17 @@ class Joueur implements InterfaceJoueur
         }
 
         Random r = new Random();
-        int valeur = 0 + r.nextInt(coupPossible.size() - 0);
+        int valeur;
+        try
+        {
+            valeur = r.nextInt(coupPossible.size());
+        }
+        catch(java.lang.IllegalArgumentException e)
+        {
+            int foo = coupPossible.size();
+            System.out.println("fou: "+ foo);
+            valeur = 0;
+        }
        
         Coup coup = coupPossible.get(valeur);
         return coup;

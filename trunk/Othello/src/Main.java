@@ -14,7 +14,7 @@ public class Main {
         // création d'un plateau
         Plateau plateau = new Plateau();
         //déclaration des joueurs
-        Joueur joueur1 = new Joueur(Couleur.NOIR, plateau,TypeJoueur.HUMAIN);
+        Joueur joueur1 = new Joueur(Couleur.NOIR, plateau,TypeJoueur.AUTOMATE);
         // Joueur joueur2 = new Joueur(Couleur.BLANC, plateau, TypeJoueur.AUTOMATE);
         Joueur joueur2 = new Joueur(Couleur.BLANC, plateau, TypeJoueur.AUTOMATE);
         //création de l'IHM du plateau
