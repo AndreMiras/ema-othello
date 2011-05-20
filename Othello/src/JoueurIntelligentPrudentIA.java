@@ -30,6 +30,9 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         ArrayList<Coup> coupPossible =
                 chercheCoupPossible(this.getPlateau(), this.getCouleur());
 
+        // for tests
+        buildArbreMaClasse(2, 3);
+
         for (int i = 0; i < coupPossible.size(); i++)
         {
             System.out.println("Ligne : " + coupPossible.get(i).getLigne() + " Colonne : " + coupPossible.get(i).getColonne());
@@ -47,11 +50,12 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     /*
      * Fonction pour créer la racine de l'arbre maClasse et appel
      * la fonction récursive
+     * TODO: remove the largeur parameter
      */
-    public static ArbreNaire buildArbreMaClasse(int profondeur, int largeur)
+    public ArbreNaire buildArbreMaClasse(int profondeur, int largeur)
     {
         // TODO: init plateau with the correct plateau
-        Plateau testPlateau = new Plateau();
+        Plateau testPlateau = this.getPlateau(); // = new Plateau();
         MaClasse maClasse = new MaClasse(testPlateau);
 
         ArbreNaire<MaClasse> a = new ArbreNaire<MaClasse>(maClasse);
@@ -63,16 +67,22 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     /*
      * Creation de l'arbre
      * TODO: finish up
+     * should this be static?
+     * TODO: ability of creating a new plateau copy from a given one
      */
-     public static ArbreNaire buildArbreMaClasseRec(ArbreNaire<MaClasse> arbre, int profondeur, int largeur)
+     public ArbreNaire buildArbreMaClasseRec(ArbreNaire<MaClasse> arbre, int profondeur, int largeur)
     {
         Double tmpDouble;
         Integer tmpInteger;
         MaClasse tmpMaClasse;
 
         Plateau testPlateau = new Plateau();
+        ArrayList<Coup> coupPossible =
+                chercheCoupPossible(arbre.getItem().getPlateau(), this.getCouleur());
+        int largeur2 = coupPossible.size();
 
         /* Feuille */
+        // TODO: the if and for statements are to be redone/removed to only be recursive
         if (profondeur == 1)
         {
             for(int i = 0; i < largeur; i ++)
@@ -88,7 +98,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         }
         else
         {
-            for (int i = 0; i < largeur; i++)
+            for (int i = 0; i < largeur2; i++)
             {
                 /*
                 tmpInteger = arbre.vue.getInfo().getIdent() * 10;
