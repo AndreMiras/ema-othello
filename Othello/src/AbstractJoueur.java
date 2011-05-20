@@ -25,8 +25,10 @@ abstract class AbstractJoueur implements InterfaceJoueur
     abstract public Coup joue();
    
     
-    //Fonction qui retourne la position des pions de couleurs adverses
-    private ArrayList<Coup> chercheCouleurAdverse()
+    /*
+     * Fonction qui retourne la position des pions de couleurs adverses
+     */
+    private ArrayList<Coup> chercheCouleurAdverse(Plateau plateau, Couleur couleur)
     {
         //Tableau dans lequel on va stockée les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse = new ArrayList<Coup>();
@@ -36,7 +38,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
             for(int j=0; j<plateau.getDimension(); j++)
             {
                 //Si la couleur correspond au joueur adverse
-                if (plateau.plateau[i][j]!=this.couleur && plateau.plateau[i][j]!=Couleur.VIDE)
+                if (plateau.plateau[i][j]!=couleur && plateau.plateau[i][j]!=Couleur.VIDE)
                 {
                     //On l'ajoute au tableau
                     tabCouleurAdverse.add(new Coup(i, j));
@@ -47,7 +49,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
     }
     
     //Fonction qui cherche les cases vides autour d'un pion passé en paramètre
-    private ArrayList<Coup> chercheVideAutour (Coup coup)
+    private ArrayList<Coup> chercheVideAutour(Coup coup)
     {
         ArrayList<Coup> tabCaseVide = new ArrayList<Coup>();
         Couleur[][] matricePlateau = this.plateau.getMatricePlateau();
@@ -104,8 +106,11 @@ abstract class AbstractJoueur implements InterfaceJoueur
 
         return tabCaseVide;
     }
-    
-    protected ArrayList<Coup> chercheCoupPossible ()
+
+    /*
+     * Pour un plateau donne et une couleur, retourne les coups possibles
+     */
+    protected ArrayList<Coup> chercheCoupPossible(Plateau plateau, Couleur couleur)
     {
         //Tableau dans lequel seront stockés les coups possibles
         ArrayList<Coup> coupPossible = new ArrayList<Coup>();
@@ -115,9 +120,10 @@ abstract class AbstractJoueur implements InterfaceJoueur
         int pointLigne;
         int pointColonne;
         //On récupère les pions de l'adversaire
-        ArrayList<Coup> tabCouleurAdverse = chercheCouleurAdverse();
+        ArrayList<Coup> tabCouleurAdverse =
+                chercheCouleurAdverse(plateau, couleur);
         
-        Couleur[][] matricePlateau = this.plateau.getMatricePlateau();
+        Couleur[][] matricePlateau = plateau.getMatricePlateau();
         
         //Condition pour sortir de boucle
         boolean flag = true;
@@ -170,6 +176,11 @@ abstract class AbstractJoueur implements InterfaceJoueur
     public Couleur getCouleur()
     {
         return couleur;
+    }
+
+    public Plateau getPlateau()
+    {
+        return plateau;
     }
     
 }

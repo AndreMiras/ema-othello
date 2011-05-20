@@ -27,7 +27,8 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     public Coup joue()
     {
         System.out.println("Coup possible : ");
-        ArrayList<Coup> coupPossible = chercheCoupPossible();
+        ArrayList<Coup> coupPossible =
+                chercheCoupPossible(this.getPlateau(), this.getCouleur());
 
         for (int i = 0; i < coupPossible.size(); i++)
         {
@@ -43,6 +44,21 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         return coup;
     }
 
+    /*
+     * Fonction pour créer la racine de l'arbre maClasse et appel
+     * la fonction récursive
+     */
+    public static ArbreNaire buildArbreMaClasse(int profondeur, int largeur)
+    {
+        // TODO: init plateau with the correct plateau
+        Plateau testPlateau = new Plateau();
+        MaClasse maClasse = new MaClasse(testPlateau);
+
+        ArbreNaire<MaClasse> a = new ArbreNaire<MaClasse>(maClasse);
+        a = buildArbreMaClasseRec(a, profondeur, largeur);
+        return a;
+    }
+
 
     /*
      * Creation de l'arbre
@@ -54,6 +70,8 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         Integer tmpInteger;
         MaClasse tmpMaClasse;
 
+        Plateau testPlateau = new Plateau();
+
         /* Feuille */
         if (profondeur == 1)
         {
@@ -62,11 +80,10 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                /*
                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
                tmpInteger += i;
-               tmpMaClasse = new MaClasse(tmpInteger);
+                */
+               tmpMaClasse = new MaClasse(testPlateau);
                tmpMaClasse.setValRandomHeuristique();
                arbre.addFils(tmpMaClasse);
-                *
-                */
            }
         }
         else

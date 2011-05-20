@@ -26,7 +26,8 @@ public class JoueurRandomIA extends AbstractJoueur
     public Coup joue()
     {
         System.out.println("Coup possible : ");
-        ArrayList<Coup> coupPossible = chercheCoupPossible();
+        ArrayList<Coup> coupPossible =
+                chercheCoupPossible(this.getPlateau(), this.getCouleur());
 
         for (int i = 0; i < coupPossible.size(); i++)
         {
