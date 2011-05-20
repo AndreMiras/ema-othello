@@ -1,7 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Random;
-import tadarbrenaire.*;
 
 
 /*
@@ -9,38 +7,22 @@ import tadarbrenaire.*;
  * and open the template in the editor.
  */
 
-class Joueur implements InterfaceJoueur
+abstract class AbstractJoueur implements InterfaceJoueur
 {
 
     private Couleur couleur;
     private Plateau plateau;
     private TypeJoueur typeJoueur;
     
-    public Joueur(Couleur couleur, Plateau plateau, TypeJoueur typeJoueur)
+    public AbstractJoueur(Couleur couleur, Plateau plateau, TypeJoueur typeJoueur)
     {
         this.couleur = couleur;
         this.plateau = plateau;
         this.typeJoueur = typeJoueur;
     }
 
-    public Coup joue()
-    {
-        System.out.println("Coup possible : ");
-        ArrayList<Coup> coupPossible = chercheCoupPossible();
-        
-        for (int i=0;i<coupPossible.size();i++)
-        {
-            System.out.println("Ligne : " + coupPossible.get(i).getLigne() + " Colonne : " + coupPossible.get(i).getColonne());
-        }
-
-        Random r = new Random();
-
-      
-        int valeur = r.nextInt(coupPossible.size());
-       
-        Coup coup = coupPossible.get(valeur);
-        return coup;
-    }
+    
+    abstract public Coup joue();
    
     
     //Fonction qui retourne la position des pions de couleurs adverses
@@ -123,7 +105,7 @@ class Joueur implements InterfaceJoueur
         return tabCaseVide;
     }
     
-    private ArrayList<Coup> chercheCoupPossible ()
+    protected ArrayList<Coup> chercheCoupPossible ()
     {
         //Tableau dans lequel seront stockés les coups possibles
         ArrayList<Coup> coupPossible = new ArrayList<Coup>();
@@ -178,55 +160,7 @@ class Joueur implements InterfaceJoueur
              
         return coupPossible;
     }
-    
-    /*
-     * Creation de l'arbre
-     * TODO: finish up
-     */
-     public static ArbreNaire buildArbreMaClasseRec(ArbreNaire<MaClasse> arbre, int profondeur, int largeur)
-    {
-        Double tmpDouble;
-        Integer tmpInteger;
-        MaClasse tmpMaClasse;
 
-        /* Feuille */
-        if (profondeur == 1)
-        {
-            for(int i = 0; i < largeur; i ++)
-           {
-               /*
-               tmpInteger = arbre.vue.getInfo().getIdent() * 10;
-               tmpInteger += i;
-               tmpMaClasse = new MaClasse(tmpInteger);
-               tmpMaClasse.setValRandomHeuristique();
-               arbre.addFils(tmpMaClasse);
-                * 
-                */
-           }
-        }
-        else
-        {
-            for (int i = 0; i < largeur; i++)
-            {
-                /*
-                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
-                tmpInteger += i;
-                tmpMaClasse = new MaClasse(tmpInteger);
-                arbre.addFils(tmpMaClasse);
-                arbre.goToFils(i);
-                buildArbreMaClasseRec(arbre, profondeur - 1, largeur);
-                arbre.goToPere();
-                * 
-                */
-            }
-        }
-        return arbre;
-    }
-    
-    
-    
-    
-    
     
     public TypeJoueur getType()
     {
