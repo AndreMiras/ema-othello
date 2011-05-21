@@ -153,7 +153,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
                         flag=false;
                     }
                     //Si on tombe sur une case vide, on sort de la boucle
-                    if(matricePlateau[pointColonne][pointLigne] == Couleur.VIDE)
+                    if(matricePlateau[pointLigne][pointColonne] == Couleur.VIDE)
                     {
                         flag=false;
                     }
