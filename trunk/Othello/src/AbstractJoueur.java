@@ -11,7 +11,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
 {
 
     private Couleur couleur;
-    private Plateau plateau;
+    protected Plateau plateau;
     private TypeJoueur typeJoueur;
     
     public AbstractJoueur(Couleur couleur, Plateau plateau, TypeJoueur typeJoueur)
