@@ -59,13 +59,62 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         MaClasse maClasse = new MaClasse(testPlateau);
 
         ArbreNaire<MaClasse> a = new ArbreNaire<MaClasse>(maClasse);
-        a = buildArbreMaClasseRec(a, profondeur, largeur);
+        a = buildArbreMaClasseRec2(a, profondeur, largeur);
         return a;
     }
 
 
     /*
-     * Creation de l'arbre
+     * Creation de l'arbre en utilisant les fonction de retournement de pion custom
+     */
+    public ArbreNaire buildArbreMaClasseRec2(ArbreNaire<MaClasse> arbre, int profondeur, int largeur)
+    {
+        Double tmpDouble;
+        Integer tmpInteger;
+        MaClasse tmpMaClasse;
+
+        Plateau testPlateau = new Plateau();
+        ArrayList<Coup> coupPossible =
+                chercheCoupPossible(arbre.getItem().getPlateau(), this.getCouleur());
+        int largeur2 = coupPossible.size();
+
+        /* Feuille */
+        // TODO: the if and for statements are to be redone/removed to only be recursive
+        if (profondeur == 1)
+        {
+            for(int i = 0; i < largeur; i ++)
+           {
+               /*
+               tmpInteger = arbre.vue.getInfo().getIdent() * 10;
+               tmpInteger += i;
+                */
+               tmpMaClasse = new MaClasse(testPlateau);
+               tmpMaClasse.setValRandomHeuristique();
+               arbre.addFils(tmpMaClasse);
+           }
+        }
+        else
+        {
+            for (int i = 0; i < largeur2; i++)
+            {
+                /*
+                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
+                tmpInteger += i;
+                tmpMaClasse = new MaClasse(tmpInteger);
+                arbre.addFils(tmpMaClasse);
+                arbre.goToFils(i);
+                buildArbreMaClasseRec(arbre, profondeur - 1, largeur);
+                arbre.goToPere();
+                *
+                */
+            }
+        }
+        return arbre;
+    }
+
+
+    /*
+     * Creation de l'arbre en utilisant la fonction de retournement de pion fournie
      * TODO: finish up
      * should this be static?
      * TODO: ability of creating a new plateau copy from a given one
