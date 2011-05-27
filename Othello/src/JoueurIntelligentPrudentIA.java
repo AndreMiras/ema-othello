@@ -28,7 +28,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     {
         System.out.println("Coup possible : ");
         ArrayList<Coup> coupPossible =
-                chercheCoupPossible(this.getPlateau(), this.getCouleur());
+                chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
 
         // for tests
         buildArbreMaClasse(2, 3);
@@ -56,9 +56,15 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     {
         // TODO: init plateau with the correct plateau
         Plateau testPlateau = this.getPlateau(); // = new Plateau();
-        MaClasse maClasse = new MaClasse(testPlateau);
+        Couleur[][] matricePlateau = this.getPlateau().getMatricePlateau();
+        // MaClassePlateau maClasse = new MaClassePlateau(testPlateau);
 
-        ArbreNaire<MaClasse> a = new ArbreNaire<MaClasse>(maClasse);
+        // ArbreNaire<MaClassePlateau> a = new ArbreNaire<MaClassePlateau>(maClasse);
+
+        MaClasseMatricePlateau maClasse = new MaClasseMatricePlateau(matricePlateau);
+        ArbreNaire<MaClasseMatricePlateau> a = new ArbreNaire<MaClasseMatricePlateau>(maClasse);
+
+        
         a = buildArbreMaClasseRec2(a, profondeur, largeur);
         return a;
     }
@@ -67,15 +73,16 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     /*
      * Creation de l'arbre en utilisant les fonction de retournement de pion custom
      */
-    public ArbreNaire buildArbreMaClasseRec2(ArbreNaire<MaClasse> arbre, int profondeur, int largeur)
+    public ArbreNaire buildArbreMaClasseRec2(ArbreNaire<MaClasseMatricePlateau> arbre, int profondeur, int largeur)
     {
         Double tmpDouble;
         Integer tmpInteger;
-        MaClasse tmpMaClasse;
+        MaClasseMatricePlateau tmpMaClasse;
 
-        Plateau testPlateau = new Plateau();
+        Couleur[][] matricePlateau =
+                new Couleur[plateau.getDimension()][plateau.getDimension()];
         ArrayList<Coup> coupPossible =
-                chercheCoupPossible(arbre.getItem().getPlateau(), this.getCouleur());
+                chercheCoupPossible(arbre.getItem().getMatricePlateau(), this.getCouleur());
         int largeur2 = coupPossible.size();
 
         /* Feuille */
@@ -88,7 +95,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
                tmpInteger += i;
                 */
-               tmpMaClasse = new MaClasse(testPlateau);
+               tmpMaClasse = new MaClasseMatricePlateau(matricePlateau);
                tmpMaClasse.setValRandomHeuristique();
                arbre.addFils(tmpMaClasse);
            }
@@ -119,15 +126,15 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
      * should this be static?
      * TODO: ability of creating a new plateau copy from a given one
      */
-     public ArbreNaire buildArbreMaClasseRec(ArbreNaire<MaClasse> arbre, int profondeur, int largeur)
+     public ArbreNaire buildArbreMaClasseRec(ArbreNaire<MaClassePlateau> arbre, int profondeur, int largeur)
     {
         Double tmpDouble;
         Integer tmpInteger;
-        MaClasse tmpMaClasse;
+        MaClassePlateau tmpMaClasse;
 
         Plateau testPlateau = new Plateau();
         ArrayList<Coup> coupPossible =
-                chercheCoupPossible(arbre.getItem().getPlateau(), this.getCouleur());
+                chercheCoupPossible(arbre.getItem().getPlateau().getMatricePlateau(), this.getCouleur());
         int largeur2 = coupPossible.size();
 
         /* Feuille */
@@ -140,7 +147,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
                tmpInteger += i;
                 */
-               tmpMaClasse = new MaClasse(testPlateau);
+               tmpMaClasse = new MaClassePlateau(testPlateau);
                tmpMaClasse.setValRandomHeuristique();
                arbre.addFils(tmpMaClasse);
            }
