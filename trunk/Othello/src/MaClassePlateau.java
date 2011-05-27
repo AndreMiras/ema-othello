@@ -11,16 +11,16 @@ import java.util.Random;
  *
  * @author ntomio
  */
-public class MaClasse {
+public class MaClassePlateau {
 
     private Plateau plateau;
     private float valHeuristique;
 
-    public MaClasse()
+    public MaClassePlateau()
     {
     }
 
-    public MaClasse(Plateau plateau)
+    public MaClassePlateau(Plateau plateau)
     {
         this.plateau = plateau;
     }

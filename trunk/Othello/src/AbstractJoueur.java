@@ -126,13 +126,13 @@ abstract class AbstractJoueur implements InterfaceJoueur
         //Condition pour sortir de boucle
         boolean flag = true;
 
-        //On fait un traitement pour chaque pion du tableau
+        //On fait un traitement pour chaque pion adverse du tableau
         for(int i=0;i<tabCouleurAdverse.size();i++)
         {
             ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(i));
             for (int j=0; j<tabCaseVide.size();j++)
             {
-                //On cherche la direction en x et y                 
+                // On cherche la direction en x et y
                 x=-(tabCaseVide.get(j).getColonne()-tabCouleurAdverse.get(i).getColonne());
                 y=-(tabCaseVide.get(j).getLigne()-tabCouleurAdverse.get(i).getLigne());
 
