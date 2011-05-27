@@ -28,7 +28,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
     /*
      * Fonction qui retourne la position des pions de couleurs adverses
      */
-    private ArrayList<Coup> chercheCouleurAdverse(Plateau plateau, Couleur couleur)
+    private ArrayList<Coup> chercheCouleurAdverse(Couleur[][] matricePlateau, Couleur couleur)
     {
         //Tableau dans lequel on va stockée les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse = new ArrayList<Coup>();
@@ -38,7 +38,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
             for(int j=0; j<plateau.getDimension(); j++)
             {
                 //Si la couleur correspond au joueur adverse
-                if (plateau.plateau[i][j]!=couleur && plateau.plateau[i][j]!=Couleur.VIDE)
+                if (matricePlateau[i][j]!=couleur && matricePlateau[i][j]!= Couleur.VIDE)
                 {
                     //On l'ajoute au tableau
                     tabCouleurAdverse.add(new Coup(i, j));
@@ -110,7 +110,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
     /*
      * Pour un plateau donne et une couleur, retourne les coups possibles
      */
-    protected ArrayList<Coup> chercheCoupPossible(Plateau plateau, Couleur couleur)
+    protected ArrayList<Coup> chercheCoupPossible(Couleur[][] matricePlateau, Couleur couleur)
     {
         //Tableau dans lequel seront stockés les coups possibles
         ArrayList<Coup> coupPossible = new ArrayList<Coup>();
@@ -121,9 +121,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
         int pointColonne;
         //On récupère les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse =
-                chercheCouleurAdverse(plateau, couleur);
-        
-        Couleur[][] matricePlateau = plateau.getMatricePlateau();
+                chercheCouleurAdverse(matricePlateau, couleur);
         
         //Condition pour sortir de boucle
         boolean flag = true;
