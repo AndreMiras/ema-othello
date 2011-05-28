@@ -177,9 +177,10 @@ abstract class AbstractJoueur implements InterfaceJoueur
         return newPlateau;
     }
     
-    //Fonction pour retourner les pions
-    public Couleur[][] retournerPions (Couleur[][] matricePlateau, Couleur couleur, Coup coup)
+    
+    public int retournerPions (Couleur[][] matricePlateau, Couleur couleur, Coup coup)
     {
+        int nbPionsRetournes = 0;
         int x = 0; //Variable qui determine la direction horizontale
         int y = 0; //Variable qui determine la direction verticale
         //Variables pour analyser les cases
@@ -210,11 +211,15 @@ abstract class AbstractJoueur implements InterfaceJoueur
                 {
                     pointColonne = pointColonne -x;
                     pointLigne = pointLigne - y;
+                    /*
+                     * On retourne effectivement les pions de la matrice
+                     */
                     while(pointColonne != coup.getColonne() && pointLigne != coup.getLigne())
                     {
                         matricePlateau[pointLigne][pointColonne] = this.couleur;
                         pointColonne = pointColonne -x;
                         pointLigne = pointLigne - y;
+                        nbPionsRetournes++;
                     }
                     flag = false;
                     
@@ -230,7 +235,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
             }
         }  
              
-        return matricePlateau;
+        return nbPionsRetournes;
     }
     
         //Fonction qui retourne un tableau des couleur adverse autour d'un pion
