@@ -167,23 +167,4 @@ public class TestArbreTest {
         result = TestArbre.minMax(arbre.racine);
         assertEquals(expResult, result, 0.0);
     }
-
-    @Test
-    public void testMinMax2()
-    {
-        System.out.println("minMax");
-
-        int result;
-        int expResult = 120;
-
-        int profondeur = 2;
-        int largeur = 3;
-        
-        ArbreNaire arbre = TestArbre.buildArbre(profondeur, largeur);
-        MinMax<Integer> minMaxInteger = new MinMax<Integer>();
-
-        result = minMaxInteger.minMax2(arbre.racine);
-        assertEquals(expResult, result);
-    }
-
 }

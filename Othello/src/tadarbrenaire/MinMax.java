@@ -20,6 +20,11 @@ public class MinMax<T>
     {
     }
 
+    /**
+     *
+     * @param tab: tableau de valeurs pour lequel on veut connaitre le max
+     * @return: valeur maximum du tableau tab
+     */
     public T max(ArrayList<T> tab)
     {
         Comparator comparator = Collections.reverseOrder();
@@ -27,6 +32,11 @@ public class MinMax<T>
         return tab.get(0);
     }
 
+    /**
+     *
+     * @param tab: tableau de valeurs pour lequel on veut connaitre le min
+     * @return: valeur minimum du tableau tab
+     */
     public T min(ArrayList<T> tab)
     {
         Comparator comparator = Collections.reverseOrder();
@@ -34,7 +44,7 @@ public class MinMax<T>
         return tab.get(tab.size() - 1);
     }
 
-    public T valmax2(Noeud<T> noeud)
+    private T valMax(Noeud<T> noeud)
     {
         T valeurLocale;
 
@@ -46,14 +56,14 @@ public class MinMax<T>
             ArrayList<T> tab = new ArrayList<T>();
             for (int i = 0; i <= noeud.getFils().size(); i++)
             {
-                tab.add(valmin2(noeud.getFils().get(i)));
+                tab.add(valMin(noeud.getFils().get(i)));
             }
             valeurLocale = max(tab);
         }
         return valeurLocale;
     }
 
-    public T valmin2(Noeud<T> noeud)
+    private T valMin(Noeud<T> noeud)
     {
         T valeurLocale;
 
@@ -66,14 +76,19 @@ public class MinMax<T>
             ArrayList<T> tab = new ArrayList<T>();
             for (int i = 0; i < noeud.getFils().size(); i++)
             {
-                tab.add(valmax2(noeud.getFils().get(i)));
+                tab.add(valMax(noeud.getFils().get(i)));
             }
             valeurLocale = min(tab);
         }
         return valeurLocale;
     }
 
-    public T minMax2(Noeud<T> noeud)
+    /**
+     * 
+     * @param noeud: noeud de depart de l'algo minMax
+     * @return: la valeur de la feuille min(max(min(...)))
+     */
+    public T minMax(Noeud<T> noeud)
     {
         Noeud localNoeud = new Noeud();
         Noeud tmpNoeud;
@@ -83,14 +98,12 @@ public class MinMax<T>
 
         for (int i = 0; i < noeud.getFils().size(); i++)
         {
-            tab.add(valmin2(noeud.getFils().get(i)));
+            tab.add(valMin(noeud.getFils().get(i)));
 
         }
 
         valeurLocale = max(tab);
 
         return valeurLocale;
-
-        //return localNoeud;
     }
 }
