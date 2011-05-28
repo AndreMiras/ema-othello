@@ -20,14 +20,13 @@ public class JoueurMeilleurCoup1 extends AbstractJoueur
     }
 
     /*
-     * Joue le coup qui retourne immediatement le plus de pions
+     * la visibilite de la fonction est passee en public pour pouvoir etre utilisee
+     * dans les tests unitaires
      */
-    @Override
-    public Coup joue()
+    public Coup meilleurCoupImmediat(Couleur[][] matricePlateau, Couleur couleur)
     {
-        System.out.println("Coup possible : ");
         ArrayList<Coup> coupPossible =
-                chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
+                chercheCoupPossible(matricePlateau, couleur);
         ArrayList<Integer> nbPionsRetournes = new ArrayList<Integer>();
 
         /*
@@ -37,8 +36,8 @@ public class JoueurMeilleurCoup1 extends AbstractJoueur
         {
             nbPionsRetournes.add(
                     retournerPions(
-                    this.plateau.getMatricePlateau(),
-                    this.getCouleur(),
+                    matricePlateau,
+                    couleur,
                     coupPossible.get(i)));
         }
 
@@ -53,8 +52,17 @@ public class JoueurMeilleurCoup1 extends AbstractJoueur
                 index = i;
             }
         }
-        
+
         Coup coup = coupPossible.get(index);
         return coup;
+    }
+
+    /*
+     * Joue le coup qui retourne immediatement le plus de pions
+     */
+    @Override
+    public Coup joue()
+    {
+        return meilleurCoupImmediat(this.plateau.getMatricePlateau(), this.getCouleur());
     }
 }
