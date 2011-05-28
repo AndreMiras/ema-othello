@@ -55,7 +55,11 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     public ArbreNaire buildArbreMaClasse(int profondeur, int largeur)
     {
         // TODO: init plateau with the correct plateau
-        Plateau testPlateau = this.getPlateau(); // = new Plateau();
+        // Plateau testPlateau = this.getPlateau(); // = new Plateau();
+
+        /*
+         * Initialisation de la matrice plateau (avec les 4 pions de depart)
+         */
         Couleur[][] matricePlateau = this.getPlateau().getMatricePlateau();
         // MaClassePlateau maClasse = new MaClassePlateau(testPlateau);
 

@@ -97,6 +97,8 @@ public class AbstractJoueurTest
     public void testRetournerPions1()
     {
         System.out.println("retournerPions");
+        Plateau plateau = new Plateau();
+        
         Couleur[][] matricePlateau = {
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
@@ -109,7 +111,7 @@ public class AbstractJoueurTest
         };
         Couleur couleur = Couleur.NOIR;
         Coup coup = new Coup(3, 2);
-        AbstractJoueur instance = new AbstractJoueur(couleur, null, TypeJoueur.HUMAIN)
+        AbstractJoueur instance = new AbstractJoueur(couleur, plateau, TypeJoueur.HUMAIN)
          {
 
             @Override
@@ -129,9 +131,10 @@ public class AbstractJoueurTest
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
         };
-        Couleur[][] result = instance.retournerPions(matricePlateau, couleur, coup);
+        int nbPionsRetournes = instance.retournerPions(matricePlateau, couleur, coup);
         
-        assertArrayEquals(expResult, result);
+        assertArrayEquals(expResult, matricePlateau);
+        // assertEquals(3, nbPionsRetournes);
         
         /*
         for(int i=0; i<matricePlateau.length; i++)
@@ -150,6 +153,7 @@ public class AbstractJoueurTest
     public void testRetournerPions2()
     {
         System.out.println("retournerPions");
+        Plateau plateau = new Plateau();
         Couleur[][] matricePlateau = {
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
@@ -162,7 +166,7 @@ public class AbstractJoueurTest
         };
         Couleur couleur = Couleur.NOIR;
         Coup coup = new Coup(2, 3);
-        AbstractJoueur instance = new AbstractJoueur(couleur, null, TypeJoueur.HUMAIN)
+        AbstractJoueur instance = new AbstractJoueur(couleur, plateau, TypeJoueur.HUMAIN)
          {
 
             @Override
@@ -182,9 +186,11 @@ public class AbstractJoueurTest
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
         };
-        Couleur[][] result = instance.retournerPions(matricePlateau, couleur, coup);
         
-        assertArrayEquals(expResult, result);
+        int nbPionsRetournes = instance.retournerPions(matricePlateau, couleur, coup);
+
+        assertArrayEquals(expResult, matricePlateau);
+        assertEquals(2, nbPionsRetournes);
         
         /*
         for(int i=0; i<matricePlateau.length; i++)
