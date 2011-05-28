@@ -4,6 +4,7 @@
  */
 package tadarbrenaire;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TestArbre
@@ -139,6 +140,40 @@ public class TestArbre
             {
                 arbre.goToFils(i);
                 depthSearch(arbre);
+                arbre.goToPere();
+            }
+        }
+    }
+
+    public static void depthSearchToArrayList(ArbreNaire<MaClasse> arbre, ArrayList<MaClasse> list)
+    {
+        // System.out.print(arbre.vue.getInfo() + "-");
+        // System.out.println(arbre.vue.getInfo().getValHeuristique());
+        list.add(arbre.vue.getInfo());
+
+        if(!arbre.isNoeudFeuille())
+        {
+            for(int i=0; i < arbre.getNbFils(); i++)
+            {
+                arbre.goToFils(i);
+                depthSearchToArrayList(arbre, list);
+                arbre.goToPere();
+            }
+        }
+    }
+
+    public static void depthSearchToArrayList2(ArbreNaire<Integer> arbre, ArrayList<Integer> list)
+    {
+        // System.out.print(arbre.vue.getInfo() + "-");
+        // System.out.println(arbre.vue.getInfo().getValHeuristique());
+        list.add(arbre.vue.getInfo());
+
+        if(!arbre.isNoeudFeuille())
+        {
+            for(int i=0; i < arbre.getNbFils(); i++)
+            {
+                arbre.goToFils(i);
+                depthSearchToArrayList2(arbre, list);
                 arbre.goToPere();
             }
         }
