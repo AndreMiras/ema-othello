@@ -21,7 +21,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     }
 
     /*
-     * Joue un coup aleatoire parmis les coups possibles
+     * Joue un coup intelligent et prudent (MinMax)
      */
     @Override
     public Coup joue()
@@ -33,17 +33,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         // for tests
         buildArbreMaClasse(2, 3);
 
-        for (int i = 0; i < coupPossible.size(); i++)
-        {
-            System.out.println("Ligne : " + coupPossible.get(i).getLigne() + " Colonne : " + coupPossible.get(i).getColonne());
-        }
-
-        Random r = new Random();
-
-
-        int valeur = r.nextInt(coupPossible.size());
-
-        Coup coup = coupPossible.get(valeur);
+        Coup coup = null;
         return coup;
     }
 
