@@ -105,7 +105,7 @@ public class JoueurMeilleurCoup1Test {
         /*
          * Le meilleur coup devrait etre celui de la case 1,6 qui retourne 5 pions
          */
-        Coup expResult = new Coup(1,6);
+        Coup expResult = new Coup(1,0);
 
         Coup result = instance.meilleurCoupImmediat(matricePlateau, couleur);
         
