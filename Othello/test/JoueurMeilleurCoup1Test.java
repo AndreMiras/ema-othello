@@ -42,13 +42,13 @@ public class JoueurMeilleurCoup1Test {
      * Test of meilleurCoupImmediat method, of class JoueurMeilleurCoup1.
      */
     @Test
-    public void testMeilleurCoupImmediat()
+    public void testMeilleurCoupImmediat1()
     {
-        System.out.println("meilleurCoupImmediat");
+        System.out.println("meilleurCoupImmediat1");
 
         Plateau plateau = new Plateau();
         Couleur couleur = Couleur.BLANC;
-        
+
         Couleur[][] matricePlateau = {
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
@@ -59,7 +59,7 @@ public class JoueurMeilleurCoup1Test {
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
         };
-        
+
         JoueurMeilleurCoup1 instance = new JoueurMeilleurCoup1(couleur, plateau, TypeJoueur.HUMAIN);
 
         /*
@@ -76,6 +76,40 @@ public class JoueurMeilleurCoup1Test {
          * Verifions que le coup retourne fait partie des deux meilleurs coups
          */
         assertTrue(Helper.coupIn(result, expResult));
+    }
+
+    /**
+     * Test of meilleurCoupImmediat method, of class JoueurMeilleurCoup1.
+     */
+    @Test
+    public void testMeilleurCoupImmediat2()
+    {
+        System.out.println("meilleurCoupImmediat2");
+
+        Plateau plateau = new Plateau();
+        Couleur couleur = Couleur.BLANC;
+
+        Couleur[][] matricePlateau = {
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.NOIR},
+            {Couleur.VIDE, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.BLANC, Couleur.BLANC},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.BLANC, Couleur.BLANC, Couleur.NOIR, Couleur.VIDE, Couleur.BLANC},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC, Couleur.NOIR, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC, Couleur.VIDE, Couleur.NOIR},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.BLANC, Couleur.NOIR, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
+        };
+
+        JoueurMeilleurCoup1 instance = new JoueurMeilleurCoup1(couleur, plateau, TypeJoueur.HUMAIN);
+
+        /*
+         * Le meilleur coup devrait etre celui de la case 1,6 qui retourne 5 pions
+         */
+        Coup expResult = new Coup(1,6);
+
+        Coup result = instance.meilleurCoupImmediat(matricePlateau, couleur);
+        
+        assertTrue(Helper.coupEqual(result, expResult));
     }
 
     /**
