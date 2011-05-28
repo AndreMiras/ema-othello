@@ -214,7 +214,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
                     /*
                      * On retourne effectivement les pions de la matrice
                      */
-                    while(pointColonne != coup.getColonne() && pointLigne != coup.getLigne())
+                    while(pointColonne != coup.getColonne() || pointLigne != coup.getLigne())
                     {
                         matricePlateau[pointLigne][pointColonne] = this.couleur;
                         pointColonne = pointColonne -x;
