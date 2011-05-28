@@ -16,7 +16,7 @@ public class Main {
         //déclaration des joueurs
         AbstractJoueur joueur1 = new JoueurRandomIA(Couleur.NOIR, plateau,TypeJoueur.AUTOMATE);
         // Joueur joueur2 = new Joueur(Couleur.BLANC, plateau, TypeJoueur.AUTOMATE);
-        AbstractJoueur joueur2 = new JoueurRandomIA(Couleur.BLANC, plateau, TypeJoueur.AUTOMATE);
+        AbstractJoueur joueur2 = new JoueurMeilleurCoup1(Couleur.BLANC, plateau, TypeJoueur.AUTOMATE);
         //création de l'IHM du plateau
         IHMplateau ihm = new IHMplateau(plateau, joueur1, joueur2);
         //association de l'IHM au plateau
