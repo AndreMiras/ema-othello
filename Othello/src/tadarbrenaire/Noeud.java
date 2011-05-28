@@ -58,7 +58,7 @@ class Noeud<T> {
 
     public boolean isNoeudFeuille()
     {
-        return getFils().size() == 0;
+        return getFils().isEmpty();
     }
 
 }
