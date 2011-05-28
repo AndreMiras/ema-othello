@@ -152,31 +152,20 @@ public class TestArbreTest {
     }
 
     /**
-     * Test of depthSearch method, of class TestArbre.
-     */
-    // @Test
-    public void testDepthSearch()
-    {
-        System.out.println("depthSearch");
-        ArbreNaire<MaClasse> arbre = null;
-        TestArbre.depthSearch(arbre);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of minMax method, of class TestArbre.
      */
-    // @Test
+    @Test
     public void testMinMax()
     {
         System.out.println("minMax");
-        Noeud<MaClasse> noeud = null;
+
+        float result;
         float expResult = 0.0F;
-        float result = TestArbre.minMax(noeud);
+        ArbreNaire<MaClasse> arbre;
+        arbre = TestArbre.buildArbreMaClasse(2, 3);
+        
+        result = TestArbre.minMax(arbre.racine);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }
