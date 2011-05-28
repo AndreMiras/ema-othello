@@ -4,49 +4,58 @@
  */
 package tadarbrenaire;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
  * @author andre
  */
-public class MinMax
+public class MinMax<T>
 {
-
-    public static int max(int[] tab)
+    
+    public MinMax()
     {
-        Arrays.sort(tab);
-        return tab[tab.length - 1];
     }
 
-    public static int min(int[] tab)
+    public T max(ArrayList<T> tab)
     {
-        Arrays.sort(tab);
-        return tab[0];
+        Comparator comparator = Collections.reverseOrder();
+        Collections.sort(tab, comparator);
+        return tab.get(0);
     }
 
-    public static int valmax2(Noeud<Integer> noeud)
+    public T min(ArrayList<T> tab)
     {
-        int valeurLocale;
+        Comparator comparator = Collections.reverseOrder();
+        Collections.sort(tab, comparator);
+        return tab.get(tab.size() - 1);
+    }
+
+    public T valmax2(Noeud<T> noeud)
+    {
+        T valeurLocale;
 
         if (noeud.isNoeudFeuille())
         {
             valeurLocale = noeud.getInfo();
         } else
         {
-            int tab[] = new int[noeud.getFils().size()];
+            ArrayList<T> tab = new ArrayList<T>();
             for (int i = 0; i <= noeud.getFils().size(); i++)
             {
-                tab[i] = valmin2(noeud.getFils().get(i));
+                tab.add(valmin2(noeud.getFils().get(i)));
             }
             valeurLocale = max(tab);
         }
         return valeurLocale;
     }
 
-    public static int valmin2(Noeud<Integer> noeud)
+    public T valmin2(Noeud<T> noeud)
     {
-        int valeurLocale;
+        T valeurLocale;
 
         if (noeud.isNoeudFeuille())
         {
@@ -54,27 +63,27 @@ public class MinMax
 
         } else
         {
-            int tab[] = new int[noeud.getFils().size()];
+            ArrayList<T> tab = new ArrayList<T>();
             for (int i = 0; i < noeud.getFils().size(); i++)
             {
-                tab[i] = valmax2(noeud.getFils().get(i));
+                tab.add(valmax2(noeud.getFils().get(i)));
             }
             valeurLocale = min(tab);
         }
         return valeurLocale;
     }
 
-    public static int minMax2(Noeud<Integer> noeud)
+    public T minMax2(Noeud<T> noeud)
     {
         Noeud localNoeud = new Noeud();
         Noeud tmpNoeud;
-        int valeurLocale;
-        int tab[] = new int[noeud.getFils().size()];
+        T valeurLocale;
+        ArrayList<T> tab = new ArrayList<T>();
 
 
         for (int i = 0; i < noeud.getFils().size(); i++)
         {
-            tab[i] = valmin2(noeud.getFils().get(i));
+            tab.add(valmin2(noeud.getFils().get(i)));
 
         }
 
