@@ -209,6 +209,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
                 //une, on fait marche arriere pour retourner les pions
                 if(matricePlateau[pointLigne][pointColonne] == this.couleur)
                 {
+                    nbPionsRetournes = 0;
                     pointColonne = pointColonne -x;
                     pointLigne = pointLigne - y;
                     /*
