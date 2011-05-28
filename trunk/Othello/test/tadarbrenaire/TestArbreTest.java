@@ -180,8 +180,9 @@ public class TestArbreTest {
         int largeur = 3;
         
         ArbreNaire arbre = TestArbre.buildArbre(profondeur, largeur);
+        MinMax<Integer> minMaxInteger = new MinMax<Integer>();
 
-        result = MinMax.minMax2(arbre.racine);
+        result = minMaxInteger.minMax2(arbre.racine);
         assertEquals(expResult, result);
     }
 

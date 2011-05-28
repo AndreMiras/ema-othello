@@ -36,6 +36,13 @@ class Noeud<T> implements Comparable<Noeud> {
         return fils;
     }
 
+    public Noeud<T> getFils(int i)
+    {
+        return fils.get(i);
+    }
+
+    
+
     public T getInfo()
     {
         return info;
