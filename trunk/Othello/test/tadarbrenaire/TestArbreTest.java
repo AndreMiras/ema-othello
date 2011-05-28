@@ -5,6 +5,7 @@
 
 package tadarbrenaire;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,7 +43,7 @@ public class TestArbreTest {
     /**
      * Test of DISABLEDmain method, of class TestArbre.
      */
-    @Test
+    // @Test
     public void testDISABLEDmain()
     {
         System.out.println("DISABLEDmain");
@@ -55,7 +56,7 @@ public class TestArbreTest {
     /**
      * Test of DISABLEmain method, of class TestArbre.
      */
-    @Test
+    // @Test
     public void testDISABLEmain()
     {
         System.out.println("DISABLEmain");
@@ -68,7 +69,7 @@ public class TestArbreTest {
     /**
      * Test of buildArbreRec method, of class TestArbre.
      */
-    @Test
+    // @Test
     public void testBuildArbreRec()
     {
         System.out.println("buildArbreRec");
@@ -85,7 +86,7 @@ public class TestArbreTest {
     /**
      * Test of buildArbreMaClasseRec method, of class TestArbre.
      */
-    @Test
+    // @Test
     public void testBuildArbreMaClasseRec()
     {
         System.out.println("buildArbreMaClasseRec");
@@ -106,19 +107,38 @@ public class TestArbreTest {
     public void testBuildArbre()
     {
         System.out.println("buildArbre");
-        int profondeur = 0;
-        int largeur = 0;
-        ArbreNaire expResult = null;
-        ArbreNaire result = TestArbre.buildArbre(profondeur, largeur);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int profondeur = 2;
+        int largeur = 3;
+        ArrayList<Integer> values = new ArrayList<Integer>();
+        ArbreNaire arbre = TestArbre.buildArbre(profondeur, largeur);
+
+
+        ArrayList<Integer> expResult = new ArrayList<Integer>();
+        expResult.add(1);
+        
+        expResult.add(10);
+        expResult.add(100);
+        expResult.add(101);
+        expResult.add(102);
+
+        expResult.add(11);
+        expResult.add(110);
+        expResult.add(111);
+        expResult.add(112);
+
+        expResult.add(12);
+        expResult.add(120);
+        expResult.add(121);
+        expResult.add(122);
+
+        TestArbre.depthSearchToArrayList2(arbre, values);
+        assertEquals(expResult, values);
     }
 
     /**
      * Test of buildArbreMaClasse method, of class TestArbre.
      */
-    @Test
+    // @Test
     public void testBuildArbreMaClasse()
     {
         System.out.println("buildArbreMaClasse");
@@ -134,7 +154,7 @@ public class TestArbreTest {
     /**
      * Test of depthSearch method, of class TestArbre.
      */
-    @Test
+    // @Test
     public void testDepthSearch()
     {
         System.out.println("depthSearch");
@@ -147,7 +167,7 @@ public class TestArbreTest {
     /**
      * Test of minMax method, of class TestArbre.
      */
-    @Test
+    // @Test
     public void testMinMax()
     {
         System.out.println("minMax");
