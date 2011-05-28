@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -61,9 +62,20 @@ public class JoueurMeilleurCoup1Test {
         
         JoueurMeilleurCoup1 instance = new JoueurMeilleurCoup1(couleur, plateau, TypeJoueur.HUMAIN);
 
-        Coup expResult = null;
+        /*
+         * Deux meilleur coup immediats sont en faite possible
+         * mais la fonction ne retourne que le premier
+         */
+        ArrayList<Coup> expResult = new ArrayList<Coup>();
+        expResult.add(new Coup(1,6));
+        expResult.add(new Coup(5,4));
+
         Coup result = instance.meilleurCoupImmediat(matricePlateau, couleur);
-        assertEquals(expResult, result);
+
+        /*
+         * Verifions que le coup retourne fait partie des deux meilleurs coups
+         */
+        assertTrue(Helper.coupIn(result, expResult));
     }
 
     /**
