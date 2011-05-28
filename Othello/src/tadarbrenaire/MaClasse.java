@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @author ntomio
  */
-public class MaClasse {
+public class MaClasse implements Comparable<MaClasse> {
 
     private int ident;
     private float valHeuristique;
@@ -54,6 +54,11 @@ public class MaClasse {
     {
         Random r = new Random();
         setValHeuristique(r.nextFloat());
+    }
+
+    public int compareTo(MaClasse t)
+    {
+        return ((Float)valHeuristique).compareTo(t.getValHeuristique());
     }
 
     /*

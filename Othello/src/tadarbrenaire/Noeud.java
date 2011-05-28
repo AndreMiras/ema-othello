@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author ntomio
  */
-class Noeud<T> {
+class Noeud<T> implements Comparable<Noeud> {
 
     private T info;
     private Noeud<T> pere;
@@ -59,6 +59,16 @@ class Noeud<T> {
     public boolean isNoeudFeuille()
     {
         return getFils().isEmpty();
+    }
+
+    public int compareTo(Noeud otherNode)
+    {
+        if (!(otherNode.getInfo() instanceof Comparable))
+        {
+            throw new ClassCastException("A Comparable object expected.");
+        }
+        Comparable comparableObject = ((Comparable) otherNode.getInfo());
+        return ((Comparable)getInfo()).compareTo(comparableObject);
     }
 
 }
