@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tadarbrenaire;
 
 import java.util.Arrays;
@@ -11,16 +10,14 @@ import java.util.Arrays;
  *
  * @author andre
  */
-public class MinMax {
-
-
+public class MinMax
+{
 
     public static int max(int[] tab)
     {
         Arrays.sort(tab);
-        return tab[tab.length-1];
+        return tab[tab.length - 1];
     }
-
 
     public static int min(int[] tab)
     {
@@ -35,19 +32,17 @@ public class MinMax {
         if (noeud.isNoeudFeuille())
         {
             valeurLocale = noeud.getInfo();
-        }
-        else
+        } else
         {
-             int tab[] = new int[noeud.getFils().size()];
-             for (int i=0; i <= noeud.getFils().size(); i++)
+            int tab[] = new int[noeud.getFils().size()];
+            for (int i = 0; i <= noeud.getFils().size(); i++)
             {
-                 tab[i] = valmin2(noeud.getFils().get(i));
-             }
-             valeurLocale = max(tab);
+                tab[i] = valmin2(noeud.getFils().get(i));
+            }
+            valeurLocale = max(tab);
         }
         return valeurLocale;
     }
-
 
     public static int valmin2(Noeud<Integer> noeud)
     {
@@ -57,15 +52,14 @@ public class MinMax {
         {
             valeurLocale = noeud.getInfo();
 
-        }
-        else
+        } else
         {
-             int tab[] = new int[noeud.getFils().size()];
-             for (int i=0; i < noeud.getFils().size(); i++)
+            int tab[] = new int[noeud.getFils().size()];
+            for (int i = 0; i < noeud.getFils().size(); i++)
             {
-                 tab[i] = valmax2(noeud.getFils().get(i));
-             }
-             valeurLocale = min(tab);
+                tab[i] = valmax2(noeud.getFils().get(i));
+            }
+            valeurLocale = min(tab);
         }
         return valeurLocale;
     }
@@ -78,7 +72,7 @@ public class MinMax {
         int tab[] = new int[noeud.getFils().size()];
 
 
-        for (int i=0; i < noeud.getFils().size(); i++)
+        for (int i = 0; i < noeud.getFils().size(); i++)
         {
             tab[i] = valmin2(noeud.getFils().get(i));
 
@@ -90,5 +84,4 @@ public class MinMax {
 
         //return localNoeud;
     }
-
 }
