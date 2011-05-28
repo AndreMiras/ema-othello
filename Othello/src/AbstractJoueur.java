@@ -49,10 +49,9 @@ abstract class AbstractJoueur implements InterfaceJoueur
     }
     
     //Fonction qui cherche les cases vides autour d'un pion passé en paramètre
-    private ArrayList<Coup> chercheVideAutour(Coup coup)
+    private ArrayList<Coup> chercheVideAutour(Couleur[][] matricePlateau, Coup coup)
     {
         ArrayList<Coup> tabCaseVide = new ArrayList<Coup>();
-        Couleur[][] matricePlateau = this.plateau.getMatricePlateau();
         int lignePrecedente = coup.getLigne()-1;
         int ligneSuivante = coup.getLigne()+1;
         int colonnePrecedente = coup.getColonne()-1;
@@ -128,7 +127,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
         //On fait un traitement pour chaque pion adverse du tableau
         for(int i=0;i<tabCouleurAdverse.size();i++)
         {
-            ArrayList<Coup> tabCaseVide = chercheVideAutour(tabCouleurAdverse.get(i));
+            ArrayList<Coup> tabCaseVide = chercheVideAutour(matricePlateau, tabCouleurAdverse.get(i));
             for (int j=0; j<tabCaseVide.size();j++)
             {
                 // On cherche la direction en x et y
@@ -144,7 +143,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
                 {
                     //On cherche une case de la couleur du joueur, si on en trouve
                     //une, c'est un coup possible
-                    if(matricePlateau[pointLigne][pointColonne] == this.couleur)
+                    if(matricePlateau[pointLigne][pointColonne] == couleur)
                     {
                         coupPossible.add(new Coup(tabCaseVide.get(j).getLigne(), tabCaseVide.get(j).getColonne()));
                         flag=false;
@@ -178,7 +177,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
     }
     
     
-    public int retournerPions (Couleur[][] matricePlateau, Couleur couleur, Coup coup)
+    public int retournerPions(Couleur[][] matricePlateau, Couleur couleur, Coup coup)
     {
         int nbPionsRetournes = 0;
         int x = 0; //Variable qui determine la direction horizontale
@@ -191,7 +190,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
         boolean flag = true;
 
         
-        ArrayList<Coup> tabCaseAdverseAutour = chercheCouleurAdverseAutour(coup, matricePlateau); 
+        ArrayList<Coup> tabCaseAdverseAutour = chercheCouleurAdverseAutour(matricePlateau, couleur, coup);
         for (int j=0; j<tabCaseAdverseAutour.size();j++)
         {
             // On cherche la direction en x et y
@@ -207,9 +206,8 @@ abstract class AbstractJoueur implements InterfaceJoueur
             {
                 //On cherche une case de la couleur du joueur, si on en trouve
                 //une, on fait marche arriere pour retourner les pions
-                if(matricePlateau[pointLigne][pointColonne] == this.couleur)
+                if(matricePlateau[pointLigne][pointColonne] == couleur)
                 {
-                    nbPionsRetournes = 0;
                     pointColonne = pointColonne -x;
                     pointLigne = pointLigne - y;
                     /*
@@ -217,7 +215,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
                      */
                     while(pointColonne != coup.getColonne() || pointLigne != coup.getLigne())
                     {
-                        matricePlateau[pointLigne][pointColonne] = this.couleur;
+                        matricePlateau[pointLigne][pointColonne] = couleur;
                         pointColonne = pointColonne -x;
                         pointLigne = pointLigne - y;
                         nbPionsRetournes++;
@@ -240,7 +238,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
     }
     
         //Fonction qui retourne un tableau des couleur adverse autour d'un pion
-    private ArrayList<Coup> chercheCouleurAdverseAutour(Coup coup, Couleur[][] matricePlateau)
+    private ArrayList<Coup> chercheCouleurAdverseAutour(Couleur[][] matricePlateau, Couleur couleur, Coup coup)
     {
         ArrayList<Coup> tabCaseCouleurAdverse = new ArrayList<Coup>();
         
@@ -282,7 +280,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
                    }
                    else
                    {
-                        if(matricePlateau[ligne][colonne] != this.couleur && matricePlateau[ligne][colonne] != Couleur.VIDE)
+                        if(matricePlateau[ligne][colonne] != couleur && matricePlateau[ligne][colonne] != Couleur.VIDE)
                         {
                             tabCaseCouleurAdverse.add(new Coup(ligne, colonne));
                         }
