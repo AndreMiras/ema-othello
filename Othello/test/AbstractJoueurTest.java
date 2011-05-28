@@ -122,6 +122,7 @@ public class AbstractJoueurTest
         coupsPossiblesExpResult.add(new Coup(1,6));
         coupsPossiblesExpResult.add(new Coup(5,2));
         coupsPossiblesExpResult.add(new Coup(5,3));
+        coupsPossiblesExpResult.add(new Coup(5,4));
         coupsPossiblesExpResult.add(new Coup(5,5));
         coupsPossiblesExpResult.add(new Coup(5,6));
         
