@@ -135,21 +135,6 @@ public class AbstractJoueurTest
         }
     }
 
-    /**
-     * Test of copieTableau method, of class AbstractJoueur.
-     */
-    // @Test
-    public void testCopieTableau()
-    {
-        System.out.println("copieTableau");
-        Plateau plateau = null;
-        AbstractJoueur instance = null;
-        Couleur[][] expResult = null;
-        Couleur[][] result = instance.copieTableau(plateau);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of retournerPions method, of class AbstractJoueur.

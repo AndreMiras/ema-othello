@@ -163,17 +163,22 @@ abstract class AbstractJoueur implements InterfaceJoueur
         return coupPossible;
     }
     
-    //Fonction pour recopier un tableau
-    public Couleur[][] copieTableau (Plateau plateau)
+    /**
+     * 
+     * @param matricePlateau: la matrice a copier
+     * @return: une copie de matricePlateau
+     */
+    public Couleur[][] copieMatricePlateau(Couleur[][] matricePlateau)
     {
-        Couleur newPlateau[][] = new Couleur[plateau.getDimension()][plateau.getDimension()];
+        Couleur newMatricePlateau[][] =
+                new Couleur[matricePlateau.length][matricePlateau[0].length];
         
-        for (int i=0; i<plateau.getDimension(); i++)
+        for (int i=0; i<matricePlateau.length; i++)
         {
-            System.arraycopy(plateau.getMatricePlateau()[i], 0, newPlateau[i], 0, plateau.getDimension());
+            System.arraycopy(matricePlateau[i], 0, newMatricePlateau[i], 0, matricePlateau.length);
         }    
         
-        return newPlateau;
+        return newMatricePlateau;
     }
     
     
@@ -237,7 +242,13 @@ abstract class AbstractJoueur implements InterfaceJoueur
         return nbPionsRetournes;
     }
     
-        //Fonction qui retourne un tableau des couleur adverse autour d'un pion
+    /**
+     * 
+     * @param matricePlateau
+     * @param couleur
+     * @param coup
+     * @return: un tableau des couleur adverse autour d'un pion
+     */
     private ArrayList<Coup> chercheCouleurAdverseAutour(Couleur[][] matricePlateau, Couleur couleur, Coup coup)
     {
         ArrayList<Coup> tabCaseCouleurAdverse = new ArrayList<Coup>();
