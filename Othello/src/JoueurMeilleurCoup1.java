@@ -30,13 +30,13 @@ public class JoueurMeilleurCoup1 extends AbstractJoueur
         ArrayList<Integer> nbPionsRetournes = new ArrayList<Integer>();
 
         /*
-         * Pour chaque coup possible, calcul le nombre de pions effectivement retournes
+         * Pour chaque coup possible, calcul le nombre de pions qui seraient retournes
          */
         for (int i = 0; i < coupPossible.size(); i++)
         {
             nbPionsRetournes.add(
                     retournerPions(
-                    matricePlateau,
+                    copieMatricePlateau(matricePlateau),
                     couleur,
                     coupPossible.get(i)));
         }
