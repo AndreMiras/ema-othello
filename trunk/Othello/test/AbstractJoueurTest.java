@@ -64,14 +64,33 @@ public class AbstractJoueurTest
     public void testChercheCoupPossible()
     {
         System.out.println("chercheCoupPossible");
-        Couleur[][] matricePlateau = null;
-        Couleur couleur = null;
-        AbstractJoueur instance = null;
+
+        Plateau plateau = new Plateau();
+        Couleur couleur = Couleur.BLANC;
+
+        Couleur[][] matricePlateau = {
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.NOIR, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.BLANC, Couleur.BLANC, Couleur.NOIR, Couleur.BLANC, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
+        };
+        AbstractJoueur instance = new AbstractJoueur(couleur, plateau, TypeJoueur.HUMAIN)
+         {
+
+            @Override
+            public Coup joue()
+            {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        };
+        
         ArrayList expResult = null;
         ArrayList result = instance.chercheCoupPossible(matricePlateau, couleur);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -98,6 +117,8 @@ public class AbstractJoueurTest
     {
         System.out.println("retournerPions");
         Plateau plateau = new Plateau();
+        Couleur couleur = Couleur.NOIR;
+        Coup coup = new Coup(3, 2);
         
         Couleur[][] matricePlateau = {
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
@@ -109,8 +130,6 @@ public class AbstractJoueurTest
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
         };
-        Couleur couleur = Couleur.NOIR;
-        Coup coup = new Coup(3, 2);
         AbstractJoueur instance = new AbstractJoueur(couleur, plateau, TypeJoueur.HUMAIN)
          {
 
@@ -134,16 +153,7 @@ public class AbstractJoueurTest
         int nbPionsRetournes = instance.retournerPions(matricePlateau, couleur, coup);
         
         assertArrayEquals(expResult, matricePlateau);
-        // assertEquals(3, nbPionsRetournes);
-        
-        /*
-        for(int i=0; i<matricePlateau.length; i++)
-        {
-            assertArrayEquals(expResult[i], result[i]);
-        }
-         * 
-         */
-        
+        assertEquals(1, nbPionsRetournes);        
     }
     
     /**
@@ -154,6 +164,9 @@ public class AbstractJoueurTest
     {
         System.out.println("retournerPions");
         Plateau plateau = new Plateau();
+        Couleur couleur = Couleur.NOIR;
+        Coup coup = new Coup(2, 3);
+        
         Couleur[][] matricePlateau = {
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
@@ -164,8 +177,6 @@ public class AbstractJoueurTest
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
         };
-        Couleur couleur = Couleur.NOIR;
-        Coup coup = new Coup(2, 3);
         AbstractJoueur instance = new AbstractJoueur(couleur, plateau, TypeJoueur.HUMAIN)
          {
 
