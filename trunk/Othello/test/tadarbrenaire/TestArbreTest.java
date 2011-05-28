@@ -181,7 +181,7 @@ public class TestArbreTest {
         
         ArbreNaire arbre = TestArbre.buildArbre(profondeur, largeur);
 
-        result = TestArbre.minMax2(arbre.racine);
+        result = MinMax.minMax2(arbre.racine);
         assertEquals(expResult, result);
     }
 
