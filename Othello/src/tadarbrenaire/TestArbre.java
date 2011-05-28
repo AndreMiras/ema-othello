@@ -6,7 +6,7 @@ package tadarbrenaire;
 
 import java.util.Arrays;
 
-public class Main
+public class TestArbre
 {
 
     /**
