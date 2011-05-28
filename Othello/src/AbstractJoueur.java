@@ -260,36 +260,22 @@ abstract class AbstractJoueur implements InterfaceJoueur
 
         int ligne;
         int colonne;
-        boolean lignePossible = true;
-        boolean colonnePossible = true;
                 
         ligne = lignePrecedente;
-        while (ligne<=ligneSuivante && lignePossible)
+        while (ligne<=ligneSuivante)
         {
-            if(ligne<0)
+           /*
+            * Si la ligne choisie est dans les bornes du plateau
+            */
+            if ((ligne >= 0) && (ligne < plateau.getDimension()))
             {
-                lignePossible=false;
-            }
-            else if(ligne >=plateau.getDimension())
-            {
-                lignePossible=false;
-            }
-            else
-            {
-               colonnePossible=true;
                colonne = colonnePrecedente;
-               while (colonne<=colonneSuivante && colonnePossible)
+               while (colonne<=colonneSuivante)
                {
-                   
-                   if(colonne<0)
-                   {
-                       colonnePossible=false;
-                   }
-                   else if(colonne >= plateau.getDimension())
-                   {
-                       colonnePossible=false;
-                   }
-                   else
+                   /*
+                    * Si la colonne choisie est dans les bornes du plateau
+                    */
+                   if ((colonne >= 0) && (colonne < plateau.getDimension()))
                    {
                         if(matricePlateau[ligne][colonne] != couleur && matricePlateau[ligne][colonne] != Couleur.VIDE)
                         {
