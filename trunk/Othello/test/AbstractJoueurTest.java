@@ -43,35 +43,6 @@ public class AbstractJoueurTest
     }
 
     /**
-     * Retourne vrai si les deux coups (lignes et colonnes sont egaux)
-     * @param c1: coup 1
-     * @param c2: coup 2
-     * @return: vrai si les deux coups (lignes et colonnes sont egaux)
-     */
-    public boolean coupEqual(Coup c1, Coup c2)
-    {
-        return ((c1.getLigne() == c2.getLigne())
-                && (c1.getColonne() == c2.getColonne()));
-    }
-
-    /**
-     *
-     * @param c1: le coup don't on veut tester l'appartenance a la liste de coups
-     * @param coups: une liste de coups
-     * @return: vrai si c1 appartient a la liste de  coups
-     */
-    public boolean coupIn(Coup c1, ArrayList<Coup> coups)
-    {
-        int i = 0;
-        
-        while(i<coups.size() && !coupEqual(c1, coups.get(i)))
-        {
-            i++;
-        }
-        return coupEqual(c1, coups.get(i));
-    }
-
-    /**
      * Test of joue method, of class AbstractJoueur.
      */
     // @Test
@@ -131,7 +102,7 @@ public class AbstractJoueurTest
 
         for(int i=0; i<coupsPossiblesResult.size(); i++)
         {
-            assertTrue(coupIn(coupsPossiblesResult.get(i), coupsPossiblesExpResult));
+            assertTrue(Helper.coupIn(coupsPossiblesResult.get(i), coupsPossiblesExpResult));
         }
     }
 
