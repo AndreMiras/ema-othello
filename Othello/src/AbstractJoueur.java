@@ -117,6 +117,9 @@ abstract class AbstractJoueur implements InterfaceJoueur
         //Variables pour analyser les cases
         int pointLigne;
         int pointColonne;
+        //Instance de helper pourvoir si un coup n'est pas deja présent dans le tableau
+        Helper helper = new Helper();
+
         //On récupère les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse =
                 chercheCouleurAdverse(matricePlateau, couleur);
@@ -145,14 +148,28 @@ abstract class AbstractJoueur implements InterfaceJoueur
                     //une, c'est un coup possible
                     if(matricePlateau[pointLigne][pointColonne] == couleur)
                     {
-                        coupPossible.add(new Coup(tabCaseVide.get(j).getLigne(), tabCaseVide.get(j).getColonne()));
-                        flag=false;
+                       Coup coupAComparer = new Coup(tabCaseVide.get(j).getLigne(), tabCaseVide.get(j).getColonne());
+                       if (coupPossible.size()==0)
+                       {
+                                coupPossible.add(coupAComparer);
+                                
+                       }
+                       else
+                       {
+                           if (helper.coupIn(coupAComparer, coupPossible) == false)
+                            {
+                                coupPossible.add(coupAComparer);
+                                
+                            }
+                        }
+                       flag = false;
                     }
                     //Si on tombe sur une case vide, on sort de la boucle
-                    if(matricePlateau[pointLigne][pointColonne] == Couleur.VIDE)
+                    else if(matricePlateau[pointLigne][pointColonne] == Couleur.VIDE)
                     {
                         flag=false;
                     }
+
                     //On déplace la case à traiter
                     pointColonne=pointColonne+x;
                     pointLigne=pointLigne+y;
