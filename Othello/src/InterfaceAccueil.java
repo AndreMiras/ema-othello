@@ -226,6 +226,13 @@ public class InterfaceAccueil extends javax.swing.JFrame {
             }
         }
 
+         /*
+          * Vérification que l'utilisateur n'a pas choisi deux fois la meme couleur
+          * Si oui, on affiche un message d'avertissement
+          * sinon on lance le jeu
+          */
+
+
          if(couleurJoueur1 == couleurJoueur2)
          {
              this.afficePopup();
