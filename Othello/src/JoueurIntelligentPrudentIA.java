@@ -38,7 +38,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                 chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
 
         // for tests
-        arbre = buildArbre(depth);
+        arbre = buildArbre(depth, this.getCouleur());
 
         minMaxInfoMatricePlateau = new MinMax<InfoMatricePlateau>();
 
@@ -66,7 +66,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
      * TODO: remove the largeur parameter
      * TODO: faire le propre dans la construction de l'arbre
      */
-    public ArbreNaire<InfoMatricePlateau> buildArbre(int profondeur)
+    public ArbreNaire<InfoMatricePlateau> buildArbre(int profondeur, Couleur color)
     {
         // TODO: init plateau with the correct plateau
         // Plateau testPlateau = this.getPlateau(); // = new Plateau();
@@ -85,7 +85,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                 new ArbreNaire<InfoMatricePlateau>(infoMatricePlateau);
 
 
-        arbre = buildArbreRec2(arbre, profondeur);
+        arbre = buildArbreRec2(arbre, profondeur, color);
         return arbre;
     }
 
@@ -93,7 +93,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     /*
      * Creation de l'arbre en utilisant les fonction de retournement de pion custom
      */
-    public ArbreNaire<InfoMatricePlateau> buildArbreRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur)
+    public ArbreNaire<InfoMatricePlateau> buildArbreRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur, Couleur color)
     {
         InfoMatricePlateau infoMatricePlateau;
 
@@ -121,7 +121,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                 // on ajoute le pion joue
                 tmpMatricePlateau[coupPossible.get(i).getLigne()][coupPossible.get(i).getColonne()] =
                         this.getCouleur();
-                // TODO: il faut changer de couleur un coup sur deux
+
                 infoMatricePlateau =
                         new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
                 // tmpMaClasse.setValRandomHeuristique();
@@ -137,12 +137,11 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                 tmpMatricePlateau[coupPossible.get(i).getLigne()][coupPossible.get(i).getColonne()] =
                         this.getCouleur();
 
-                // TODO: il faut changer de couleur un coup sur deux
                 infoMatricePlateau =
                         new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
                 arbre.addFils(infoMatricePlateau);
                 arbre.goToFils(i);
-                buildArbreRec2(arbre, profondeur - 1);
+                buildArbreRec2(arbre, profondeur - 1, getOppositeCouleur(color));
                 arbre.goToPere();
             }
         }
