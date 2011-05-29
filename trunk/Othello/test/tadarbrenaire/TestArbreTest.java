@@ -41,66 +41,6 @@ public class TestArbreTest {
     }
 
     /**
-     * Test of DISABLEDmain method, of class TestArbre.
-     */
-    // @Test
-    public void testDISABLEDmain()
-    {
-        System.out.println("DISABLEDmain");
-        String[] args = null;
-        TestArbre.DISABLEDmain(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of DISABLEmain method, of class TestArbre.
-     */
-    // @Test
-    public void testDISABLEmain()
-    {
-        System.out.println("DISABLEmain");
-        String[] args = null;
-        TestArbre.DISABLEmain(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buildArbreRec method, of class TestArbre.
-     */
-    // @Test
-    public void testBuildArbreRec()
-    {
-        System.out.println("buildArbreRec");
-        ArbreNaire<Integer> arbre = null;
-        int profondeur = 0;
-        int largeur = 0;
-        ArbreNaire expResult = null;
-        ArbreNaire result = TestArbre.buildArbreRec(arbre, profondeur, largeur);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buildArbreMaClasseRec method, of class TestArbre.
-     */
-    // @Test
-    public void testBuildArbreMaClasseRec()
-    {
-        System.out.println("buildArbreMaClasseRec");
-        ArbreNaire<MaClasse> arbre = null;
-        int profondeur = 0;
-        int largeur = 0;
-        ArbreNaire expResult = null;
-        ArbreNaire result = TestArbre.buildArbreMaClasseRec(arbre, profondeur, largeur);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of buildArbre method, of class TestArbre.
      */
     @Test
@@ -138,39 +78,19 @@ public class TestArbreTest {
     /**
      * Test of buildArbreMaClasse method, of class TestArbre.
      */
-    // @Test
+    @Test
     public void testBuildArbreMaClasse()
     {
         System.out.println("buildArbreMaClasse");
-        int profondeur = 0;
-        int largeur = 0;
-        ArbreNaire expResult = null;
-        ArbreNaire result = TestArbre.buildArbreMaClasse(profondeur, largeur);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        int profondeur = 2;
+        int largeur = 3;
+        ArbreNaire arbre = TestArbre.buildArbreMaClasse(profondeur, largeur);
+        assertTrue(arbre.getNbFils() == 3);
+        assertTrue(arbre.isRacine());
 
-    /**
-     * Test of minMax method, of class TestArbre.
-     */
-    @Test
-    public void testMinMax()
-    {
-        System.out.println("minMax");
-
-        Noeud<MaClasse> resultNode;
-        ArbreNaire<MaClasse> arbre;
-        MinMax<MaClasse> minMaxMaClasse;
-        
-        arbre = TestArbre.buildArbreMaClasse(2, 3);
-
-        minMaxMaClasse = new MinMax<MaClasse>();
-        resultNode = minMaxMaClasse.minMaxNode(arbre.racine);
-        
-        /*
-         * Le noeud remonte devrait etre un noeud feuille
-         */
-        assertTrue(resultNode.isNoeudFeuille());
+        // going to the last child
+        arbre.goToFils(0);
+        arbre.goToFils(0);
+        assertTrue(arbre.vue.isNoeudFeuille());
     }
 }
