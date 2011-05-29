@@ -38,12 +38,16 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
     }
 
 
-
-
     public Couleur[][] getMatricePlateau()
     {
         return matricePlateau;
     }
+
+    public Coup getCoup()
+    {
+        return coup;
+    }
+    
 
     public void setIdent(Couleur[][] matricePlateau)
     {
