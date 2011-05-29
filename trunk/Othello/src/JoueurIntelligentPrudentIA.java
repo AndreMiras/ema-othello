@@ -72,15 +72,8 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
      */
     public ArbreNaire<InfoMatricePlateau> buildArbre(Couleur[][] matricePlateau, int profondeur, Couleur color)
     {
-        // TODO: init plateau with the correct plateau
-        // Plateau testPlateau = this.getPlateau(); // = new Plateau();
-
-        // MaClassePlateau maClasse = new MaClassePlateau(testPlateau);
-
-        // ArbreNaire<MaClassePlateau> a = new ArbreNaire<MaClassePlateau>(maClasse);
-
         InfoMatricePlateau infoMatricePlateau =
-                new InfoMatricePlateau(matricePlateau, this.getCouleur(), null);
+                new InfoMatricePlateau(matricePlateau, color, null);
         ArbreNaire<InfoMatricePlateau> arbre =
                 new ArbreNaire<InfoMatricePlateau>(infoMatricePlateau);
 
