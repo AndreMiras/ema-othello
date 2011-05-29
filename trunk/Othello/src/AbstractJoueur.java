@@ -148,12 +148,15 @@ abstract class AbstractJoueur implements InterfaceJoueur
                     //une, c'est un coup possible
                     if(matricePlateau[pointLigne][pointColonne] == couleur)
                     {
+
                        Coup coupAComparer = new Coup(tabCaseVide.get(j).getLigne(), tabCaseVide.get(j).getColonne());
-                       if (coupPossible.size()==0)
+                       //Si le tableau de coup est vide on peut ajouter le coup
+                       if (coupPossible.isEmpty())
                        {
                                 coupPossible.add(coupAComparer);
                                 
                        }
+                       //Sinon on verifie que ce coup n'est pas deja present dans le tableau
                        else
                        {
                            if (helper.coupIn(coupAComparer, coupPossible) == false)
