@@ -34,6 +34,11 @@ public class Helper {
     {
         int i = 0;
 
+        if (coups.isEmpty())
+        {
+            return false;
+        }
+        
         while(i<coups.size()-1 && !coupEqual(c1, coups.get(i)))
         {
             i++;
