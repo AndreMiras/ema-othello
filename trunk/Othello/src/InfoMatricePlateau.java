@@ -1,6 +1,3 @@
-
-import java.util.Random;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -12,16 +9,30 @@ import java.util.Random;
  */
 public class InfoMatricePlateau {
 
+    /*
+     * nombre de case total dans le jeu
+     */
+    private int TOTAL_CASE = 8*8;
+    
     private Couleur[][] matricePlateau;
-    private float valHeuristique;
+    /*
+     * La valeur heuristique correspond au rapport du nombre de pions retournes
+     * sur le nombre de pions total.
+     * Cette valeur est calculee a partir de la matrice Plateau puis conservee
+     * pour ne pas avoir a refaire le calcul a chaque fois.
+     */
+    private Float valHeuristique;
+
+    private Couleur color;
 
     public InfoMatricePlateau()
     {
     }
 
-    public InfoMatricePlateau(Couleur[][] matricePlateau)
+    public InfoMatricePlateau(Couleur[][] matricePlateau, Couleur color)
     {
         this.matricePlateau = matricePlateau;
+        this.color = color;
     }
 
 
@@ -37,20 +48,41 @@ public class InfoMatricePlateau {
         this.matricePlateau = matricePlateau;
     }
 
+    /**
+     * retourne la valeur heuristique si celle-ci a deja ete calculee, sinon
+     * calcul, enregistre puis retourne la valeur heuristique
+     * @return: la valeur heuristique
+     */
     public float getValHeuristique()
     {
+        /*
+         * si la valeur Heuristique n'a pas encore ete calculee
+         */
+        if (valHeuristique == null)
+        {
+            valHeuristique = computeHeuristicValue();
+        }
         return valHeuristique;
     }
 
-    public void setValHeuristique(float valHeuristique)
+    /**
+     * calcule la valeur heuristique a partir d'une matrice de couleur
+     * @return: calcul et retourne la valeur heuristique a partir d'une matrice de couleur
+     */
+    private Float computeHeuristicValue()
     {
-        this.valHeuristique = valHeuristique;
-    }
-
-    public void setValRandomHeuristique()
-    {
-        Random r = new Random();
-        setValHeuristique(r.nextFloat());
+        Float totalPion = new Float(0);
+        for(int row = 0; row < matricePlateau.length; row++)
+        {
+           for(int col = 0; col < matricePlateau[row].length; col++)
+           {
+               if(matricePlateau[row][col] == color)
+               {
+                   totalPion++;
+               }
+           }
+        }
+        return (totalPion/TOTAL_CASE);
     }
 
     /*

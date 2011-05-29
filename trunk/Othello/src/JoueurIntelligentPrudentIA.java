@@ -31,7 +31,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                 chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
 
         // for tests
-        buildArbreMaClasse(2, 3);
+        buildArbre(2, 3);
 
         Coup coup = null;
         return coup;
@@ -42,7 +42,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
      * la fonction récursive
      * TODO: remove the largeur parameter
      */
-    public ArbreNaire buildArbreMaClasse(int profondeur, int largeur)
+    public ArbreNaire buildArbre(int profondeur, int largeur)
     {
         // TODO: init plateau with the correct plateau
         // Plateau testPlateau = this.getPlateau(); // = new Plateau();
@@ -55,19 +55,20 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
 
         // ArbreNaire<MaClassePlateau> a = new ArbreNaire<MaClassePlateau>(maClasse);
 
-        InfoMatricePlateau maClasse = new InfoMatricePlateau(matricePlateau);
-        ArbreNaire<InfoMatricePlateau> a = new ArbreNaire<InfoMatricePlateau>(maClasse);
+        InfoMatricePlateau infoMatricePlateau = new InfoMatricePlateau(matricePlateau);
+        ArbreNaire<InfoMatricePlateau> arbre =
+                new ArbreNaire<InfoMatricePlateau>(infoMatricePlateau);
 
         
-        a = buildArbreMaClasseRec2(a, profondeur, largeur);
-        return a;
+        arbre = buildArbreRec2(arbre, profondeur, largeur);
+        return arbre;
     }
 
 
     /*
      * Creation de l'arbre en utilisant les fonction de retournement de pion custom
      */
-    public ArbreNaire buildArbreMaClasseRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur, int largeur)
+    public ArbreNaire buildArbreRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur, int largeur)
     {
         Double tmpDouble;
         Integer tmpInteger;
@@ -90,58 +91,6 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                tmpInteger += i;
                 */
                tmpMaClasse = new InfoMatricePlateau(matricePlateau);
-               tmpMaClasse.setValRandomHeuristique();
-               arbre.addFils(tmpMaClasse);
-           }
-        }
-        else
-        {
-            for (int i = 0; i < largeur2; i++)
-            {
-                /*
-                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
-                tmpInteger += i;
-                tmpMaClasse = new MaClasse(tmpInteger);
-                arbre.addFils(tmpMaClasse);
-                arbre.goToFils(i);
-                buildArbreMaClasseRec(arbre, profondeur - 1, largeur);
-                arbre.goToPere();
-                *
-                */
-            }
-        }
-        return arbre;
-    }
-
-
-    /*
-     * Creation de l'arbre en utilisant la fonction de retournement de pion fournie
-     * TODO: finish up
-     * should this be static?
-     * TODO: ability of creating a new plateau copy from a given one
-     */
-     public ArbreNaire buildArbreMaClasseRec(ArbreNaire<MaClassePlateau> arbre, int profondeur, int largeur)
-    {
-        Double tmpDouble;
-        Integer tmpInteger;
-        MaClassePlateau tmpMaClasse;
-
-        Plateau testPlateau = new Plateau();
-        ArrayList<Coup> coupPossible =
-                chercheCoupPossible(arbre.getItem().getPlateau().getMatricePlateau(), this.getCouleur());
-        int largeur2 = coupPossible.size();
-
-        /* Feuille */
-        // TODO: the if and for statements are to be redone/removed to only be recursive
-        if (profondeur == 1)
-        {
-            for(int i = 0; i < largeur; i ++)
-           {
-               /*
-               tmpInteger = arbre.vue.getInfo().getIdent() * 10;
-               tmpInteger += i;
-                */
-               tmpMaClasse = new MaClassePlateau(testPlateau);
                tmpMaClasse.setValRandomHeuristique();
                arbre.addFils(tmpMaClasse);
            }
