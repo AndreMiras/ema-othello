@@ -97,9 +97,11 @@ abstract class AbstractJoueur implements InterfaceJoueur
                         }
                    }
                    colonne++;
+                   colonnePossible=true;
                }
             }
             ligne++;
+            lignePossible=true;
         } 
 
         return tabCaseVide;
@@ -142,7 +144,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
                 pointLigne = tabCouleurAdverse.get(i).getLigne()+y;
                 //On boucle tant qu'on est dans le tableau
                 flag = true;
-                while(pointColonne>0 && pointColonne<plateau.getDimension() && pointLigne>0 && pointLigne<plateau.getDimension() && flag==true)
+                while(pointColonne>=0 && pointColonne<plateau.getDimension() && pointLigne>=0 && pointLigne<plateau.getDimension() && flag==true)
                 {
                     //On cherche une case de la couleur du joueur, si on en trouve
                     //une, c'est un coup possible
