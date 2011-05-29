@@ -55,7 +55,8 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
 
         // ArbreNaire<MaClassePlateau> a = new ArbreNaire<MaClassePlateau>(maClasse);
 
-        InfoMatricePlateau infoMatricePlateau = new InfoMatricePlateau(matricePlateau);
+        InfoMatricePlateau infoMatricePlateau =
+                new InfoMatricePlateau(matricePlateau, this.getCouleur());
         ArbreNaire<InfoMatricePlateau> arbre =
                 new ArbreNaire<InfoMatricePlateau>(infoMatricePlateau);
 
@@ -90,8 +91,9 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
                tmpInteger += i;
                 */
-               tmpMaClasse = new InfoMatricePlateau(matricePlateau);
-               tmpMaClasse.setValRandomHeuristique();
+               tmpMaClasse =
+                       new InfoMatricePlateau(matricePlateau, this.getCouleur());
+               // tmpMaClasse.setValRandomHeuristique();
                arbre.addFils(tmpMaClasse);
            }
         }
