@@ -162,23 +162,6 @@ public class TestArbre
         }
     }
 
-    public static void depthSearchToArrayList2(ArbreNaire<Integer> arbre, ArrayList<Integer> list)
-    {
-        // System.out.print(arbre.vue.getInfo() + "-");
-        // System.out.println(arbre.vue.getInfo().getValHeuristique());
-        list.add(arbre.vue.getInfo());
-
-        if(!arbre.isNoeudFeuille())
-        {
-            for(int i=0; i < arbre.getNbFils(); i++)
-            {
-                arbre.goToFils(i);
-                depthSearchToArrayList2(arbre, list);
-                arbre.goToPere();
-            }
-        }
-    }
-
     public static float maxIndex(float[] tabFloat)
     {
         Arrays.sort(tabFloat);

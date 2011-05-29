@@ -131,7 +131,7 @@ public class TestArbreTest {
         expResult.add(121);
         expResult.add(122);
 
-        TestArbre.depthSearchToArrayList2(arbre, values);
+        arbre.depthSearchToArrayList(values);
         assertEquals(expResult, values);
     }
 
