@@ -92,10 +92,13 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                 tmpInteger += i;
                  */
                 tmpMatricePlateau = copieMatricePlateau(matricePlateau);
-                retournerPions(matricePlateau, this.getCouleur(), coupPossible.get(i));
+                retournerPions(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
+                // on ajoute le pion joue
+                tmpMatricePlateau[coupPossible.get(i).getLigne()][coupPossible.get(i).getColonne()] =
+                        this.getCouleur();
                 // TODO: il faut changer de couleur un coup sur deux
                 infoMatricePlateau =
-                        new InfoMatricePlateau(matricePlateau, this.getCouleur());
+                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur());
                 // tmpMaClasse.setValRandomHeuristique();
                 arbre.addFils(infoMatricePlateau);
             }
@@ -103,16 +106,19 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         {
             for (int i = 0; i < largeur2; i++)
             {
-                /*
-                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
-                tmpInteger += i;
-                tmpMaClasse = new MaClasse(tmpInteger);
-                arbre.addFils(tmpMaClasse);
+                tmpMatricePlateau = copieMatricePlateau(matricePlateau);
+                retournerPions(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
+                // on ajoute le pion joue
+                tmpMatricePlateau[coupPossible.get(i).getLigne()][coupPossible.get(i).getColonne()] =
+                        this.getCouleur();
+
+                // TODO: il faut changer de couleur un coup sur deux
+                infoMatricePlateau =
+                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur());
+                arbre.addFils(infoMatricePlateau);
                 arbre.goToFils(i);
-                buildArbreMaClasseRec(arbre, profondeur - 1, largeur);
+                buildArbreRec2(arbre, profondeur - 1);
                 arbre.goToPere();
-                 *
-                 */
             }
         }
         return arbre;
