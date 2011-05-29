@@ -38,7 +38,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
             for(int j=0; j<plateau.getDimension(); j++)
             {
                 //Si la couleur correspond au joueur adverse
-                if (matricePlateau[i][j]!=couleur && matricePlateau[i][j]!= Couleur.VIDE)
+                if (matricePlateau[i][j] == getOppositeCouleur(couleur))
                 {
                     //On l'ajoute au tableau
                     tabCouleurAdverse.add(new Coup(i, j));
@@ -313,6 +313,15 @@ abstract class AbstractJoueur implements InterfaceJoueur
     public Couleur getCouleur()
     {
         return couleur;
+    }
+
+    public Couleur getOppositeCouleur(Couleur color)
+    {
+        if (color == Couleur.BLANC)
+        {
+            return Couleur.NOIR;
+        }
+        return Couleur.BLANC;
     }
 
     public Plateau getPlateau()
