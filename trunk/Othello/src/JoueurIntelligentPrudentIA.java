@@ -26,11 +26,12 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     public Coup joue()
     {
         System.out.println("Coup possible : ");
+        ArbreNaire<InfoMatricePlateau> arbre;
         ArrayList<Coup> coupPossible =
                 chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
 
         // for tests
-        buildArbre(2, 3);
+        arbre = buildArbre(2, 3);
 
         Coup coup = null;
         return coup;
@@ -40,8 +41,9 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
      * Fonction pour créer la racine de l'arbre maClasse et appel
      * la fonction récursive
      * TODO: remove the largeur parameter
+     * TODO: faire le propre dans la construction de l'arbre
      */
-    public ArbreNaire buildArbre(int profondeur, int largeur)
+    public ArbreNaire<InfoMatricePlateau> buildArbre(int profondeur, int largeur)
     {
         // TODO: init plateau with the correct plateau
         // Plateau testPlateau = this.getPlateau(); // = new Plateau();
@@ -68,7 +70,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     /*
      * Creation de l'arbre en utilisant les fonction de retournement de pion custom
      */
-    public ArbreNaire buildArbreRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur)
+    public ArbreNaire<InfoMatricePlateau> buildArbreRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur)
     {
         InfoMatricePlateau infoMatricePlateau;
 
