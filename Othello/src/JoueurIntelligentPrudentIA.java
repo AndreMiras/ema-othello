@@ -6,13 +6,12 @@ import tadarbrenaire.MinMax;
 import tadarbrenaire.Noeud;
 
 /*
- * Ce joueur automatique se contente de joueur un coup aleatoire parmis
- * les coups possibles
+ * JoueurIntelligentPrudentIA.java
+ * Author : Miras Andre & Tomio Nicolas
  */
-/**
- *
- * @author andre
- */
+
+
+
 public class JoueurIntelligentPrudentIA extends AbstractJoueur
 {
 

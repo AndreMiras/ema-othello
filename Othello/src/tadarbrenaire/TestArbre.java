@@ -1,10 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tadarbrenaire;
 
 import java.util.ArrayList;
+
+/*
+ * TestArbre.java
+ * Author : Miras Andre & Tomio Nicolas
+ */
 
 public class TestArbre
 {

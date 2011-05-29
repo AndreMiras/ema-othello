@@ -1,12 +1,10 @@
+
+
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * GameConstant.java
+ * Author : Miras Andre & Tomio Nicolas
  */
 
-/**
- *
- * @author andre
- */
 public interface GameConstant {
 
     public static final Couleur[][] START_GRID = {

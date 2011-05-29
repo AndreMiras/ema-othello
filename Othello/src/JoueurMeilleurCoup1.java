@@ -1,15 +1,17 @@
 
 import java.util.ArrayList;
-import java.util.Random;
+
 
 /*
- * Ce joueur automatique se contente de joueur un coup aleatoire parmis
+ * JoueurMeilleurCoup.java
+ * Author : Miras Andre & Tomio Nicolas
+ */
+
+/*
+ * Ce joueur automatique joue le coup qui retourne le plus de pions parmis
  * les coups possibles
  */
-/**
- *
- * @author andre
- */
+
 public class JoueurMeilleurCoup1 extends AbstractJoueur
 {
 

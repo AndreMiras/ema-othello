@@ -1,17 +1,10 @@
 package tadarbrenaire;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
 import java.util.ArrayList;
 
-/**
- *
- * @author ntomio
+/*
+ * Noeud.java
+ * Author : Miras Andre & Tomio Nicolas
  */
 public class Noeud<T> implements Comparable<Noeud> {
 

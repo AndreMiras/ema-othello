@@ -1,17 +1,11 @@
 package tadarbrenaire;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 
 import java.util.Random;
 
-/**
- *
- * @author ntomio
+/*
+ * Maclasse.java
+ * Author : Miras Andre & Tomio Nicolas
  */
 public class MaClasse implements Comparable<MaClasse> {
 

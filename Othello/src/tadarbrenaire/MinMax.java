@@ -1,16 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tadarbrenaire;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-/**
- *
- * @author andre
+/*
+ * MinMax.java
+ * Author : Miras Andre & Tomio Nicolas
  */
 public class MinMax<T>
 {
