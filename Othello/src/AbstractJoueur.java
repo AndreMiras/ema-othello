@@ -49,6 +49,8 @@ abstract class AbstractJoueur implements InterfaceJoueur
     }
     
     //Fonction qui cherche les cases vides autour d'un pion passé en paramètre
+    // TODO: code refacto, this is the exact same code as chercheCouleurAdverseAutour
+    // those two functions can probably share some code
     private ArrayList<Coup> chercheVideAutour(Couleur[][] matricePlateau, Coup coup)
     {
         ArrayList<Coup> tabCaseVide = new ArrayList<Coup>();
