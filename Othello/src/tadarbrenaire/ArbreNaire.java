@@ -1,5 +1,7 @@
 package tadarbrenaire;
 
+import java.util.ArrayList;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -78,5 +80,21 @@ public class ArbreNaire<T>
 
     public void suppressNoeud()
     {
+    }
+
+
+    public void depthSearchToArrayList(ArrayList<T> list)
+    {
+        list.add(vue.getInfo());
+
+        if(!isNoeudFeuille())
+        {
+            for(int i=0; i < getNbFils(); i++)
+            {
+                goToFils(i);
+                depthSearchToArrayList(list);
+                goToPere();
+            }
+        }
     }
 }
