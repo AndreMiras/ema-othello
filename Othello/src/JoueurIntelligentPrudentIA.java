@@ -55,8 +55,8 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
 
         // ArbreNaire<MaClassePlateau> a = new ArbreNaire<MaClassePlateau>(maClasse);
 
-        MaClasseMatricePlateau maClasse = new MaClasseMatricePlateau(matricePlateau);
-        ArbreNaire<MaClasseMatricePlateau> a = new ArbreNaire<MaClasseMatricePlateau>(maClasse);
+        InfoMatricePlateau maClasse = new InfoMatricePlateau(matricePlateau);
+        ArbreNaire<InfoMatricePlateau> a = new ArbreNaire<InfoMatricePlateau>(maClasse);
 
         
         a = buildArbreMaClasseRec2(a, profondeur, largeur);
@@ -67,11 +67,11 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     /*
      * Creation de l'arbre en utilisant les fonction de retournement de pion custom
      */
-    public ArbreNaire buildArbreMaClasseRec2(ArbreNaire<MaClasseMatricePlateau> arbre, int profondeur, int largeur)
+    public ArbreNaire buildArbreMaClasseRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur, int largeur)
     {
         Double tmpDouble;
         Integer tmpInteger;
-        MaClasseMatricePlateau tmpMaClasse;
+        InfoMatricePlateau tmpMaClasse;
 
         Couleur[][] matricePlateau =
                 new Couleur[plateau.getDimension()][plateau.getDimension()];
@@ -89,7 +89,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
                tmpInteger += i;
                 */
-               tmpMaClasse = new MaClasseMatricePlateau(matricePlateau);
+               tmpMaClasse = new InfoMatricePlateau(matricePlateau);
                tmpMaClasse.setValRandomHeuristique();
                arbre.addFils(tmpMaClasse);
            }
