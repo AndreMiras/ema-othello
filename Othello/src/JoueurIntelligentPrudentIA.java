@@ -34,9 +34,6 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         Noeud<InfoMatricePlateau> nodeToPlay;
         Noeud<InfoMatricePlateau> nodeToPlayParent;
         
-        ArrayList<Coup> coupPossible =
-                chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
-
 
         /*
          * Initialisation de la matrice plateau (avec les 4 pions de depart)
@@ -75,7 +72,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     public ArbreNaire<InfoMatricePlateau> buildArbre(Couleur[][] matricePlateau, int profondeur, Couleur color)
     {
         InfoMatricePlateau infoMatricePlateau =
-                new InfoMatricePlateau(matricePlateau, color, null);
+                new InfoMatricePlateau(matricePlateau, this.getCouleur(), null);
         ArbreNaire<InfoMatricePlateau> arbre =
                 new ArbreNaire<InfoMatricePlateau>(infoMatricePlateau);
 
@@ -118,7 +115,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                         color;
 
                 infoMatricePlateau =
-                        new InfoMatricePlateau(tmpMatricePlateau, color, coupPossible.get(i));
+                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
                 // tmpMaClasse.setValRandomHeuristique();
                 arbre.addFils(infoMatricePlateau);
             }
@@ -133,7 +130,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                         color;
 
                 infoMatricePlateau =
-                        new InfoMatricePlateau(tmpMatricePlateau, color, coupPossible.get(i));
+                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
                 arbre.addFils(infoMatricePlateau);
                 arbre.goToFils(i);
                 buildArbreRec2(arbre, profondeur - 1, getOppositeCouleur(color));
