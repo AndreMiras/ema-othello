@@ -32,6 +32,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         MinMax<InfoMatricePlateau> minMaxInfoMatricePlateau;
         Noeud<InfoMatricePlateau> nodeMinMax;
         Noeud<InfoMatricePlateau> nodeToPlay;
+        Noeud<InfoMatricePlateau> nodeToPlayParent;
         
         ArrayList<Coup> coupPossible =
                 chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
@@ -51,12 +52,14 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         nodeMinMax = minMaxInfoMatricePlateau.minMaxNode(arbre.racine);
 
         /*
-         * on recupere le premier noeud menant vers ce noeud
+         * on remonte le premier noeud menant vers ce noeud
          */
-        nodeToPlay = nodeMinMax;
-        for(int i = 0; i < depth-1; i++)
+        nodeToPlayParent = nodeMinMax;
+        nodeToPlay = nodeToPlayParent;
+        while(nodeToPlayParent.getPere() != null)
         {
-            nodeToPlay = nodeToPlay.getPere();
+            nodeToPlay = nodeToPlayParent;
+            nodeToPlayParent = nodeToPlayParent.getPere();
         }
 
         Coup coup = nodeToPlay.getInfo().getCoup();
