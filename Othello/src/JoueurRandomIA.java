@@ -34,7 +34,7 @@ public class JoueurRandomIA extends AbstractJoueur
                 chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
 
         /*
-         * On affiche les coups possibles dans la sortie stadard
+         * On affiche les coups possibles dans la sortie standard
          */
         System.out.println("Coup possible : ");
         for (int i = 0; i < coupPossible.size(); i++)

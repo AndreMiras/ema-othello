@@ -56,6 +56,8 @@ public class JoueurMeilleurCoup1 extends AbstractJoueur
         }
 
         Coup coup = coupPossible.get(index);
+        System.out.println("coup: " +
+                Helper.coupToString(coup));
         return coup;
     }
 
