@@ -41,38 +41,6 @@ public class MinMaxTest {
     }
 
     /**
-     * Test of max method, of class MinMax.
-     */
-    // @Test
-    public void testMax()
-    {
-        System.out.println("max");
-        ArrayList<Integer> tab = null;
-        MinMax instance = new MinMax();
-        Object expResult = null;
-        Object result = instance.max(tab);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of min method, of class MinMax.
-     */
-    // @Test
-    public void testMin()
-    {
-        System.out.println("min");
-        ArrayList<Integer> tab = null;
-        MinMax instance = new MinMax();
-        Object expResult = null;
-        Object result = instance.min(tab);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of minMax method, of class MinMax with Integer as generic type.
      */
     @Test
