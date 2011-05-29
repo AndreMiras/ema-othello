@@ -34,18 +34,11 @@ public class Helper {
     {
         int i = 0;
 
-        while(i<coups.size() && !coupEqual(c1, coups.get(i)))
+        while(i<coups.size()-1 && !coupEqual(c1, coups.get(i)))
         {
             i++;
         }
-        if (i==0)
-        {
-            return coupEqual(c1, coups.get(i));
-        }
-        else
-        {
-            return coupEqual(c1, coups.get(i-1));
-        }
+        return coupEqual(c1, coups.get(i));
     }
 
     
