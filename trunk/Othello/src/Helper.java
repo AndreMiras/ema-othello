@@ -41,5 +41,10 @@ public class Helper {
         return coupEqual(c1, coups.get(i));
     }
 
+    public static String coupToString(Coup coup)
+    {
+        return "(" + coup.getLigne() + "," + coup.getColonne() + ")";
+    }
+
     
 }

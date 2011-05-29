@@ -26,7 +26,6 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     @Override
     public Coup joue()
     {
-        System.out.println("Coup possible : ");
         int depth = 2;
         ArbreNaire<InfoMatricePlateau> arbre;
         MinMax<InfoMatricePlateau> minMaxInfoMatricePlateau;
@@ -60,6 +59,9 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         }
 
         Coup coup = nodeToPlay.getInfo().getCoup();
+        System.out.println("nodeToPlay (heuristic): " + nodeToPlay.getInfo().getValHeuristique());
+        System.out.println("nodeMinMax (coup): " +
+                Helper.coupToString(nodeMinMax.getInfo().getCoup()));
         return coup;
     }
 
