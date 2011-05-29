@@ -61,6 +61,12 @@ public class HelperTest {
         Coup c3 = new Coup(6,7);
         Coup c4 = new Coup(7,8);
         ArrayList<Coup> coups =  new ArrayList<Coup>();
+
+        /*
+         * testons d'abord avec une liste vide
+         */
+        assertFalse(Helper.coupIn(c2, coups));
+        
         coups.add(new Coup(4,5));
         coups.add(new Coup(6,7));
         coups.add(new Coup(7,8));
