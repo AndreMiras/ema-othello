@@ -37,8 +37,12 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         ArrayList<Coup> coupPossible =
                 chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
 
-        // for tests
-        arbre = buildArbre(depth, this.getCouleur());
+
+        /*
+         * Initialisation de la matrice plateau (avec les 4 pions de depart)
+         */
+        arbre = buildArbre(
+                this.getPlateau().getMatricePlateau(), depth, this.getCouleur());
 
         minMaxInfoMatricePlateau = new MinMax<InfoMatricePlateau>();
 
@@ -66,15 +70,11 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
      * TODO: remove the largeur parameter
      * TODO: faire le propre dans la construction de l'arbre
      */
-    public ArbreNaire<InfoMatricePlateau> buildArbre(int profondeur, Couleur color)
+    public ArbreNaire<InfoMatricePlateau> buildArbre(Couleur[][] matricePlateau, int profondeur, Couleur color)
     {
         // TODO: init plateau with the correct plateau
         // Plateau testPlateau = this.getPlateau(); // = new Plateau();
 
-        /*
-         * Initialisation de la matrice plateau (avec les 4 pions de depart)
-         */
-        Couleur[][] matricePlateau = this.getPlateau().getMatricePlateau();
         // MaClassePlateau maClasse = new MaClassePlateau(testPlateau);
 
         // ArbreNaire<MaClassePlateau> a = new ArbreNaire<MaClassePlateau>(maClasse);
@@ -93,7 +93,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     /*
      * Creation de l'arbre en utilisant les fonction de retournement de pion custom
      */
-    public ArbreNaire<InfoMatricePlateau> buildArbreRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur, Couleur color)
+    private ArbreNaire<InfoMatricePlateau> buildArbreRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur, Couleur color)
     {
         InfoMatricePlateau infoMatricePlateau;
 
