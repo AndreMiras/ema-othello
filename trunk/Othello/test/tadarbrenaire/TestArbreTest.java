@@ -154,17 +154,23 @@ public class TestArbreTest {
     /**
      * Test of minMax method, of class TestArbre.
      */
-    // @Test
+    @Test
     public void testMinMax()
     {
         System.out.println("minMax");
 
-        float result;
-        float expResult = 0.0F;
+        Noeud<MaClasse> resultNode;
         ArbreNaire<MaClasse> arbre;
-        arbre = TestArbre.buildArbreMaClasse(2, 3);
+        MinMax<MaClasse> minMaxMaClasse;
         
-        result = TestArbre.minMax(arbre.racine);
-        assertEquals(expResult, result, 0.0);
+        arbre = TestArbre.buildArbreMaClasse(2, 3);
+
+        minMaxMaClasse = new MinMax<MaClasse>();
+        resultNode = minMaxMaClasse.minMaxNode(arbre.racine);
+        
+        /*
+         * Le noeud remonte devrait etre un noeud feuille
+         */
+        assertTrue(resultNode.isNoeudFeuille());
     }
 }
