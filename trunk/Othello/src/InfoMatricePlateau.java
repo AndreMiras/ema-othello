@@ -16,7 +16,7 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
      * Cette valeur est calculee a partir de la matrice Plateau puis conservee
      * pour ne pas avoir a refaire le calcul a chaque fois.
      */
-    private Float valHeuristique;
+    private Integer valHeuristique;
 
     private Couleur color;
     private Coup coup;
@@ -54,7 +54,7 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
      * calcul, enregistre puis retourne la valeur heuristique
      * @return: la valeur heuristique
      */
-    public Float getValHeuristique()
+    public Integer getValHeuristique()
     {
         /*
          * si la valeur Heuristique n'a pas encore ete calculee
@@ -70,9 +70,9 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
      * calcule la valeur heuristique a partir d'une matrice de couleur
      * @return: calcul et retourne la valeur heuristique a partir d'une matrice de couleur
      */
-    private Float computeHeuristicValue()
+    private Integer computeHeuristicValue()
     {
-        Float totalPion = new Float(0);
+        int totalPion = 0;
         for(int row = 0; row < matricePlateau.length; row++)
         {
            for(int col = 0; col < matricePlateau[row].length; col++)
@@ -83,7 +83,7 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
                }
            }
         }
-        return (totalPion/TOTAL_CASE);
+        return totalPion;
     }
 
     public int compareTo(InfoMatricePlateau t)
