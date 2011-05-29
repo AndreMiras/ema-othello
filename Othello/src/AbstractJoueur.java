@@ -185,7 +185,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
                 //Si on tombe sur une case vide, on sort de la boucle
                 else if(matricePlateau[pointLigne][pointColonne] == Couleur.VIDE)
                 {
-                    flag=false;
+                    flag = false;
                 }
                 //On déplace la case à traiter
                 pointColonne=pointColonne+x;
@@ -197,7 +197,12 @@ abstract class AbstractJoueur implements InterfaceJoueur
     }
 
 
-    //Fonction qui cherche les cases vides autour d'un pion passé en paramètre
+    /**
+     *
+     * @param matricePlateau
+     * @param coup
+     * @return: retourne les cases vides autour d'un pion passe en parametre
+     */
     private ArrayList<Coup> chercheVideAutour(Couleur[][] matricePlateau, Coup coup)
     {
         return getNeighborWithColor(matricePlateau, Couleur.VIDE, coup);
@@ -209,7 +214,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
      * @param matricePlateau
      * @param couleur
      * @param coup
-     * @return: un tableau des couleur adverse autour d'un pion
+     * @return: un tableau avec tout les pion de la couleur passee en param autour du coup passe en param
      */
     private ArrayList<Coup> getNeighborWithColor(Couleur[][] matricePlateau, Couleur couleur, Coup coup)
     {
