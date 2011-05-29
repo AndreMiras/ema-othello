@@ -32,12 +32,26 @@ public class MinMax<T>
         return tab.get(0);
     }
 
+    public Noeud<T> maxNode(ArrayList<Noeud<T>> tab)
+    {
+        Comparator comparator = Collections.reverseOrder();
+        Collections.sort(tab, comparator);
+        return tab.get(0);
+    }
+
     /**
      *
      * @param tab: tableau de valeurs pour lequel on veut connaitre le min
      * @return: valeur minimum du tableau tab
      */
     public T min(ArrayList<T> tab)
+    {
+        Comparator comparator = Collections.reverseOrder();
+        Collections.sort(tab, comparator);
+        return tab.get(tab.size() - 1);
+    }
+
+    public Noeud<T> minNode(ArrayList<Noeud<T>> tab)
     {
         Comparator comparator = Collections.reverseOrder();
         Collections.sort(tab, comparator);
@@ -63,6 +77,25 @@ public class MinMax<T>
         return valeurLocale;
     }
 
+    private Noeud<T> valMaxNode(Noeud<T> noeud)
+    {
+        Noeud<T> localNode;
+
+        if (noeud.isNoeudFeuille())
+        {
+            localNode = noeud;
+        } else
+        {
+            ArrayList<Noeud<T>> tab = new ArrayList<Noeud<T>>();
+            for (int i = 0; i <= noeud.getFils().size(); i++)
+            {
+                tab.add(valMinNode(noeud.getFils().get(i)));
+            }
+            localNode = maxNode(tab);
+        }
+        return localNode;
+    }
+
     private T valMin(Noeud<T> noeud)
     {
         T valeurLocale;
@@ -83,6 +116,26 @@ public class MinMax<T>
         return valeurLocale;
     }
 
+    private Noeud<T> valMinNode(Noeud<T> noeud)
+    {
+        Noeud<T> localNode;
+
+        if (noeud.isNoeudFeuille())
+        {
+            localNode = noeud;
+
+        } else
+        {
+            ArrayList<Noeud<T>> tab = new ArrayList<Noeud<T>>();
+            for (int i = 0; i < noeud.getFils().size(); i++)
+            {
+                tab.add(valMaxNode(noeud.getFils().get(i)));
+            }
+            localNode = minNode(tab);
+        }
+        return localNode;
+    }
+
     /**
      * 
      * @param noeud: noeud de depart de l'algo minMax
@@ -90,8 +143,6 @@ public class MinMax<T>
      */
     public T minMax(Noeud<T> noeud)
     {
-        Noeud localNoeud = new Noeud();
-        Noeud tmpNoeud;
         T valeurLocale;
         ArrayList<T> tab = new ArrayList<T>();
 
@@ -105,5 +156,28 @@ public class MinMax<T>
         valeurLocale = max(tab);
 
         return valeurLocale;
+    }
+
+    /**
+     *
+     * @param noeud: noeud de depart de l'algo minMax
+     * @return: le noeud feille min(max(min(...)))
+     */
+    public Noeud<T> minMaxNode(Noeud<T> noeud)
+    {
+        Noeud<T> localNode;
+        T valeurLocale;
+        ArrayList<Noeud<T>> tab = new ArrayList<Noeud<T>>();
+
+
+        for (int i = 0; i < noeud.getFils().size(); i++)
+        {
+            tab.add(valMinNode(noeud.getFils().get(i)));
+
+        }
+
+        localNode = maxNode(tab);
+
+        return localNode;
     }
 }

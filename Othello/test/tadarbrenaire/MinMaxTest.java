@@ -93,4 +93,25 @@ public class MinMaxTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test of minMaxNode method, of class MinMax.
+     */
+    @Test
+    public void testMinMaxNode()
+    {
+        System.out.println("minMaxNode");
+
+        Noeud<Integer> result;
+        Integer expResult = 120;
+
+        int profondeur = 2;
+        int largeur = 3;
+
+        ArbreNaire arbre = TestArbre.buildArbre(profondeur, largeur);
+        MinMax<Integer> minMaxInteger = new MinMax<Integer>();
+
+        result = minMaxInteger.minMaxNode(arbre.racine);
+        assertEquals(expResult, result.getInfo());
+    }
+
 }
