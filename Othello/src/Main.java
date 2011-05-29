@@ -11,6 +11,7 @@ public class Main {
      */
     public static void main(String[] args)
     {
+        /*
         // création d'un plateau
         Plateau plateau = new Plateau();
         //déclaration des joueurs
@@ -21,7 +22,8 @@ public class Main {
         IHMplateau ihm = new IHMplateau(plateau, joueur1, joueur2);
         //association de l'IHM au plateau
         plateau.setInterface(ihm);
-
+        */
+        InterfaceAccueil accueil = new InterfaceAccueil();
     }
 
 }
