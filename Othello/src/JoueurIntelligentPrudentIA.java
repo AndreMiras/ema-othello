@@ -14,7 +14,6 @@ import tadarbrenaire.ArbreNaire;
 public class JoueurIntelligentPrudentIA extends AbstractJoueur
 {
 
-
     public JoueurIntelligentPrudentIA(Couleur couleur, Plateau plateau, TypeJoueur typeJoueur)
     {
         super(couleur, plateau, typeJoueur);
@@ -60,8 +59,8 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         ArbreNaire<InfoMatricePlateau> arbre =
                 new ArbreNaire<InfoMatricePlateau>(infoMatricePlateau);
 
-        
-        arbre = buildArbreRec2(arbre, profondeur, largeur);
+
+        arbre = buildArbreRec2(arbre, profondeur);
         return arbre;
     }
 
@@ -69,14 +68,15 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     /*
      * Creation de l'arbre en utilisant les fonction de retournement de pion custom
      */
-    public ArbreNaire buildArbreRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur, int largeur)
+    public ArbreNaire buildArbreRec2(ArbreNaire<InfoMatricePlateau> arbre, int profondeur)
     {
-        Double tmpDouble;
-        Integer tmpInteger;
-        InfoMatricePlateau tmpMaClasse;
+        InfoMatricePlateau infoMatricePlateau;
 
         Couleur[][] matricePlateau =
                 new Couleur[plateau.getDimension()][plateau.getDimension()];
+        // utilisee pour jouer les coups des fils
+        Couleur[][] tmpMatricePlateau;
+        
         ArrayList<Coup> coupPossible =
                 chercheCoupPossible(arbre.getItem().getMatricePlateau(), this.getCouleur());
         int largeur2 = coupPossible.size();
@@ -85,19 +85,21 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         // TODO: the if and for statements are to be redone/removed to only be recursive
         if (profondeur == 1)
         {
-            for(int i = 0; i < largeur; i ++)
-           {
-               /*
-               tmpInteger = arbre.vue.getInfo().getIdent() * 10;
-               tmpInteger += i;
-                */
-               tmpMaClasse =
-                       new InfoMatricePlateau(matricePlateau, this.getCouleur());
-               // tmpMaClasse.setValRandomHeuristique();
-               arbre.addFils(tmpMaClasse);
-           }
-        }
-        else
+            for (int i = 0; i < largeur2; i++)
+            {
+                /*
+                tmpInteger = arbre.vue.getInfo().getIdent() * 10;
+                tmpInteger += i;
+                 */
+                tmpMatricePlateau = copieMatricePlateau(matricePlateau);
+                retournerPions(matricePlateau, this.getCouleur(), coupPossible.get(i));
+                // TODO: il faut changer de couleur un coup sur deux
+                infoMatricePlateau =
+                        new InfoMatricePlateau(matricePlateau, this.getCouleur());
+                // tmpMaClasse.setValRandomHeuristique();
+                arbre.addFils(infoMatricePlateau);
+            }
+        } else
         {
             for (int i = 0; i < largeur2; i++)
             {
@@ -109,12 +111,10 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                 arbre.goToFils(i);
                 buildArbreMaClasseRec(arbre, profondeur - 1, largeur);
                 arbre.goToPere();
-                *
-                */
+                 *
+                 */
             }
         }
         return arbre;
     }
-
-
 }
