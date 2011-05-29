@@ -7,7 +7,7 @@
  *
  * @author andre
  */
-public class InfoMatricePlateau {
+public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
 
     /*
      * nombre de case total dans le jeu
@@ -53,7 +53,7 @@ public class InfoMatricePlateau {
      * calcul, enregistre puis retourne la valeur heuristique
      * @return: la valeur heuristique
      */
-    public float getValHeuristique()
+    public Float getValHeuristique()
     {
         /*
          * si la valeur Heuristique n'a pas encore ete calculee
@@ -83,6 +83,11 @@ public class InfoMatricePlateau {
            }
         }
         return (totalPion/TOTAL_CASE);
+    }
+
+    public int compareTo(InfoMatricePlateau t)
+    {
+        return getValHeuristique().compareTo(t.getValHeuristique());
     }
 
     /*
