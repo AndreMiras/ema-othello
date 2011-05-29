@@ -106,6 +106,48 @@ public class AbstractJoueurTest
         }
     }
 
+     @Test
+    public void testChercheCoupPossible2()
+    {
+        System.out.println("chercheCoupPossible");
+
+        Plateau plateau = new Plateau();
+        Couleur couleur = Couleur.BLANC;
+
+        Couleur[][] matricePlateau = {
+            {Couleur.VIDE, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.BLANC, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC},
+            {Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC},
+            {Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC},
+            {Couleur.BLANC, Couleur.NOIR, Couleur.BLANC, Couleur.NOIR, Couleur.NOIR, Couleur.BLANC, Couleur.BLANC, Couleur.BLANC},
+            {Couleur.BLANC, Couleur.NOIR, Couleur.BLANC, Couleur.NOIR, Couleur.BLANC, Couleur.NOIR, Couleur.BLANC, Couleur.BLANC},
+            {Couleur.BLANC, Couleur.NOIR, Couleur.NOIR, Couleur.BLANC, Couleur.NOIR, Couleur.BLANC, Couleur.NOIR, Couleur.BLANC},
+            {Couleur.BLANC, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR}
+        };
+        AbstractJoueur instance = new AbstractJoueur(couleur, plateau, TypeJoueur.HUMAIN)
+         {
+
+            @Override
+            public Coup joue()
+            {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        };
+
+        ArrayList coupsPossiblesExpResult = new ArrayList<Coup>();
+        coupsPossiblesExpResult.add(new Coup(0,0));
+
+
+        ArrayList<Coup> coupsPossiblesResult = instance.chercheCoupPossible(matricePlateau, couleur);
+        assertEquals(coupsPossiblesExpResult.size(), coupsPossiblesResult.size());
+
+        for(int i=0; i<coupsPossiblesResult.size(); i++)
+        {
+            assertTrue(Helper.coupIn(coupsPossiblesResult.get(i), coupsPossiblesExpResult));
+        }
+    }
+
+
 
     /**
      * Test of retournerPions method, of class AbstractJoueur.
