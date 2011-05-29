@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author ntomio
  */
-class Noeud<T> implements Comparable<Noeud> {
+public class Noeud<T> implements Comparable<Noeud> {
 
     private T info;
     private Noeud<T> pere;
