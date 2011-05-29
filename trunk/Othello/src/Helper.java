@@ -38,7 +38,14 @@ public class Helper {
         {
             i++;
         }
-        return coupEqual(c1, coups.get(i));
+        if (i==0)
+        {
+            return coupEqual(c1, coups.get(i));
+        }
+        else
+        {
+            return coupEqual(c1, coups.get(i-1));
+        }
     }
 
     
