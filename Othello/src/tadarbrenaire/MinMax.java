@@ -50,7 +50,7 @@ public class MinMax<T>
         } else
         {
             ArrayList<Noeud<T>> tab = new ArrayList<Noeud<T>>();
-            for (int i = 0; i <= noeud.getFils().size(); i++)
+            for (int i = 0; i < noeud.getFils().size(); i++)
             {
                 tab.add(valMinNode(noeud.getFils().get(i)));
             }
