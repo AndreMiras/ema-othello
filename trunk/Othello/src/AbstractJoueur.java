@@ -1,10 +1,9 @@
 
 import java.util.ArrayList;
 
-
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * AbstractJoueur.java
+ * Author : Miras Andre & Tomio Nicolas
  */
 
 abstract class AbstractJoueur implements InterfaceJoueur

@@ -3,10 +3,9 @@ package tadarbrenaire;
 import java.util.ArrayList;
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * ArbreNaire.java
+ * Author : Miras Andre & Tomio Nicolas
  */
-
 
 public class ArbreNaire<T>
 {

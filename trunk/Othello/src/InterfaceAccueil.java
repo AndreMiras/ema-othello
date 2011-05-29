@@ -2,22 +2,8 @@
 import javax.swing.JOptionPane;
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * InterfaceAccueil.java
- *
- * Created on 29 mai 2011, 14:52:03
- */
-
-
-
-
-/**
- *
- * @author Nicolas
+ * Author : Miras Andre & Tomio Nicolas
  */
 public class InterfaceAccueil extends javax.swing.JFrame {
 

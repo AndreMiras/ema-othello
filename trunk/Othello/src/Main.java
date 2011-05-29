@@ -1,8 +1,7 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Main.java
+ * Author : Miras Andre & Tomio Nicolas
  */
-
 
 public class Main {
 
@@ -23,6 +22,11 @@ public class Main {
         //association de l'IHM au plateau
         plateau.setInterface(ihm);
         */
+
+        /*
+         * On affiche l'interface acceuil qui permet de choisir
+         * le type de joueur
+         */
         InterfaceAccueil accueil = new InterfaceAccueil();
     }
 
