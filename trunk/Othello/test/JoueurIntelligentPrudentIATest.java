@@ -122,4 +122,37 @@ public class JoueurIntelligentPrudentIATest {
         assertNotNull(nodeMinMax);
     }
 
+    /**
+     * Test avec une profondeur de 4.
+     */
+    @Test
+    public void testBuildArbre3()
+    {
+        System.out.println("buildArbre");
+        Couleur[][] matricePlateau = {
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.NOIR, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.BLANC, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE},
+            {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
+        };
+        int profondeur = 4;
+        Plateau plateau = new Plateau();
+        Couleur color = Couleur.BLANC;
+        JoueurIntelligentPrudentIA instance =
+                new JoueurIntelligentPrudentIA(color, plateau, TypeJoueur.AUTOMATE);
+        ArbreNaire arbre = instance.buildArbre(matricePlateau, profondeur, color);
+
+        Noeud<InfoMatricePlateau> nodeMinMax;
+        MinMax<InfoMatricePlateau> minMaxInfoMatricePlateau =
+                new MinMax<InfoMatricePlateau>();
+        nodeMinMax = minMaxInfoMatricePlateau.minMaxNode(arbre.racine);
+
+        // TODO: test tres basique a ameliorer par la suite
+        assertNotNull(nodeMinMax);
+    }
+
 }
