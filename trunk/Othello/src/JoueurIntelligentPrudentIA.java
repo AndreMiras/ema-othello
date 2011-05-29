@@ -103,7 +103,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         Couleur[][] tmpMatricePlateau;
         
         ArrayList<Coup> coupPossible =
-                chercheCoupPossible(arbre.getItem().getMatricePlateau(), this.getCouleur());
+                chercheCoupPossible(arbre.getItem().getMatricePlateau(), color);
         int largeur2 = coupPossible.size();
 
         /* Feuille */
@@ -117,13 +117,13 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                 tmpInteger += i;
                  */
                 tmpMatricePlateau = copieMatricePlateau(matricePlateau);
-                retournerPions(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
+                retournerPions(tmpMatricePlateau, color, coupPossible.get(i));
                 // on ajoute le pion joue
                 tmpMatricePlateau[coupPossible.get(i).getLigne()][coupPossible.get(i).getColonne()] =
-                        this.getCouleur();
+                        color;
 
                 infoMatricePlateau =
-                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
+                        new InfoMatricePlateau(tmpMatricePlateau, color, coupPossible.get(i));
                 // tmpMaClasse.setValRandomHeuristique();
                 arbre.addFils(infoMatricePlateau);
             }
@@ -132,13 +132,13 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
             for (int i = 0; i < largeur2; i++)
             {
                 tmpMatricePlateau = copieMatricePlateau(matricePlateau);
-                retournerPions(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
+                retournerPions(tmpMatricePlateau, color, coupPossible.get(i));
                 // on ajoute le pion joue
                 tmpMatricePlateau[coupPossible.get(i).getLigne()][coupPossible.get(i).getColonne()] =
-                        this.getCouleur();
+                        color;
 
                 infoMatricePlateau =
-                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
+                        new InfoMatricePlateau(tmpMatricePlateau, color, coupPossible.get(i));
                 arbre.addFils(infoMatricePlateau);
                 arbre.goToFils(i);
                 buildArbreRec2(arbre, profondeur - 1, getOppositeCouleur(color));
