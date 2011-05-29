@@ -57,12 +57,18 @@ public class HelperTest {
     public void testCoupIn() {
         System.out.println("coupIn");
         Coup c1 = new Coup(3,2);
+        Coup c2 = new Coup(4,5);
+        Coup c3 = new Coup(6,7);
+        Coup c4 = new Coup(7,8);
         ArrayList<Coup> coups =  new ArrayList<Coup>();
         coups.add(new Coup(4,5));
+        coups.add(new Coup(6,7));
         coups.add(new Coup(7,8));
-        boolean expResult = false;
-        boolean result = Helper.coupIn(c1, coups);
-        assertEquals(expResult, result);
+        
+        assertFalse(Helper.coupIn(c1, coups));
+        assertTrue(Helper.coupIn(c2, coups));
+        assertTrue(Helper.coupIn(c3, coups));
+        assertTrue(Helper.coupIn(c4, coups));
     }
 
 }
