@@ -73,10 +73,10 @@ public class MinMaxTest {
     }
 
     /**
-     * Test of minMax method, of class MinMax.
+     * Test of minMax method, of class MinMax with Integer as generic type.
      */
     @Test
-    public void testMinMax()
+    public void testMinMax1()
     {
         System.out.println("minMax");
 
@@ -91,6 +91,30 @@ public class MinMaxTest {
 
         result = minMaxInteger.minMax(arbre.racine);
         assertEquals(expResult, result);
+    }
+
+
+    /**
+     * Test of minMax method, of class TestArbre with MaClasse as generic type.
+     */
+    @Test
+    public void testMinMax2()
+    {
+        System.out.println("minMax");
+
+        Noeud<MaClasse> resultNode;
+        ArbreNaire<MaClasse> arbre;
+        MinMax<MaClasse> minMaxMaClasse;
+
+        arbre = TestArbre.buildArbreMaClasse(2, 3);
+
+        minMaxMaClasse = new MinMax<MaClasse>();
+        resultNode = minMaxMaClasse.minMaxNode(arbre.racine);
+
+        /*
+         * Le noeud remonte devrait etre un noeud feuille
+         */
+        assertTrue(resultNode.isNoeudFeuille());
     }
 
     /**
