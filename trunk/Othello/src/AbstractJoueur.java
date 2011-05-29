@@ -50,67 +50,6 @@ abstract class AbstractJoueur implements InterfaceJoueur
         return tabCouleurAdverse;
     }
     
-    //Fonction qui cherche les cases vides autour d'un pion passé en paramètre
-    // TODO: code refacto, this is the exact same code as chercheCouleurAdverseAutour
-    // those two functions can probably share some code
-    private ArrayList<Coup> chercheVideAutour(Couleur[][] matricePlateau, Coup coup)
-    {
-        ArrayList<Coup> tabCaseVide = new ArrayList<Coup>();
-        int lignePrecedente = coup.getLigne()-1;
-        int ligneSuivante = coup.getLigne()+1;
-        int colonnePrecedente = coup.getColonne()-1;
-        int colonneSuivante = coup.getColonne()+1;
-
-        int ligne;
-        int colonne;
-        boolean lignePossible = true;
-        boolean colonnePossible = true;
-        
-        
-        ligne = lignePrecedente;
-        while (ligne<=ligneSuivante && lignePossible)
-        {
-            if(ligne<0)
-            {
-                lignePossible=false;
-            }
-            else if(ligne >=plateau.getDimension())
-            {
-                lignePossible=false;
-            }
-            else
-            {
-               colonnePossible=true;
-               colonne = colonnePrecedente;
-               while (colonne<=colonneSuivante && colonnePossible)
-               {
-                   
-                   if(colonne<0)
-                   {
-                       colonnePossible=false;
-                   }
-                   else if(colonne >= plateau.getDimension())
-                   {
-                       colonnePossible=false;
-                   }
-                   else
-                   {
-                        if(matricePlateau[ligne][colonne] == Couleur.VIDE)
-                        {
-                            tabCaseVide.add(new Coup(ligne, colonne));
-                        }
-                   }
-                   colonne++;
-                   colonnePossible=true;
-               }
-            }
-            ligne++;
-            lignePossible=true;
-        } 
-
-        return tabCaseVide;
-    }
-
     /*
      * Pour un plateau donne et une couleur, retourne les coups possibles
      */
@@ -256,6 +195,69 @@ abstract class AbstractJoueur implements InterfaceJoueur
              
         return nbPionsRetournes;
     }
+
+
+    //Fonction qui cherche les cases vides autour d'un pion passé en paramètre
+    // TODO: code refacto, this is the exact same code as chercheCouleurAdverseAutour
+    // those two functions can probably share some code
+    private ArrayList<Coup> chercheVideAutour(Couleur[][] matricePlateau, Coup coup)
+    {
+        ArrayList<Coup> tabCaseVide = new ArrayList<Coup>();
+        int lignePrecedente = coup.getLigne()-1;
+        int ligneSuivante = coup.getLigne()+1;
+        int colonnePrecedente = coup.getColonne()-1;
+        int colonneSuivante = coup.getColonne()+1;
+
+        int ligne;
+        int colonne;
+        boolean lignePossible = true;
+        boolean colonnePossible = true;
+
+
+        ligne = lignePrecedente;
+        while (ligne<=ligneSuivante && lignePossible)
+        {
+            if(ligne<0)
+            {
+                lignePossible=false;
+            }
+            else if(ligne >=plateau.getDimension())
+            {
+                lignePossible=false;
+            }
+            else
+            {
+               colonnePossible=true;
+               colonne = colonnePrecedente;
+               while (colonne<=colonneSuivante && colonnePossible)
+               {
+
+                   if(colonne<0)
+                   {
+                       colonnePossible=false;
+                   }
+                   else if(colonne >= plateau.getDimension())
+                   {
+                       colonnePossible=false;
+                   }
+                   else
+                   {
+                        if(matricePlateau[ligne][colonne] == Couleur.VIDE)
+                        {
+                            tabCaseVide.add(new Coup(ligne, colonne));
+                        }
+                   }
+                   colonne++;
+                   colonnePossible=true;
+               }
+            }
+            ligne++;
+            lignePossible=true;
+        }
+
+        return tabCaseVide;
+    }
+
     
     /**
      * 
