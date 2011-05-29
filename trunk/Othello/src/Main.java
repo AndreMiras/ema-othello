@@ -10,7 +10,6 @@ public class Main {
      */
     public static void main(String[] args)
     {
-        /*
         // création d'un plateau
         Plateau plateau = new Plateau();
         //déclaration des joueurs
@@ -21,13 +20,12 @@ public class Main {
         IHMplateau ihm = new IHMplateau(plateau, joueur1, joueur2);
         //association de l'IHM au plateau
         plateau.setInterface(ihm);
-        */
 
         /*
          * On affiche l'interface acceuil qui permet de choisir
          * le type de joueur
          */
-        InterfaceAccueil accueil = new InterfaceAccueil();
+        // InterfaceAccueil accueil = new InterfaceAccueil();
     }
 
 }
