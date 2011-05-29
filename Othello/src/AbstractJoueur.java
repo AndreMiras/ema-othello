@@ -112,13 +112,13 @@ abstract class AbstractJoueur implements InterfaceJoueur
     {
         //Tableau dans lequel seront stockés les coups possibles
         ArrayList<Coup> coupPossible = new ArrayList<Coup>();
+        Coup coupAComparer;
+
         int x = 0; //Variable qui determine la direction horizontale
         int y = 0; //Variable qui determine la direction verticale
         //Variables pour analyser les cases
         int pointLigne;
         int pointColonne;
-        //Instance de helper pourvoir si un coup n'est pas deja présent dans le tableau
-        Helper helper = new Helper();
 
         //On récupère les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse =
@@ -148,24 +148,13 @@ abstract class AbstractJoueur implements InterfaceJoueur
                     //une, c'est un coup possible
                     if(matricePlateau[pointLigne][pointColonne] == couleur)
                     {
-
-                       Coup coupAComparer = new Coup(tabCaseVide.get(j).getLigne(), tabCaseVide.get(j).getColonne());
-                       //Si le tableau de coup est vide on peut ajouter le coup
-                       if (coupPossible.isEmpty())
-                       {
-                                coupPossible.add(coupAComparer);
-                                
-                       }
-                       //Sinon on verifie que ce coup n'est pas deja present dans le tableau
-                       else
-                       {
-                           if (helper.coupIn(coupAComparer, coupPossible) == false)
-                            {
-                                coupPossible.add(coupAComparer);
-                                
-                            }
+                        // on verifie que le coup n'a pas deja ete ajoute avant de l'ajouter
+                        coupAComparer = new Coup(tabCaseVide.get(j).getLigne(), tabCaseVide.get(j).getColonne());
+                        if (!Helper.coupIn(coupAComparer, coupPossible))
+                        {
+                            coupPossible.add(coupAComparer);
                         }
-                       flag = false;
+                        flag = false;
                     }
                     //Si on tombe sur une case vide, on sort de la boucle
                     else if(matricePlateau[pointLigne][pointColonne] == Couleur.VIDE)
