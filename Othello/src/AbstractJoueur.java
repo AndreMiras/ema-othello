@@ -31,13 +31,16 @@ abstract class AbstractJoueur implements InterfaceJoueur
     {
         //Tableau dans lequel on va stockée les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse = new ArrayList<Coup>();
+        Couleur oppositeColor = getOppositeCouleur(couleur);
+        int boardDimension = plateau.getDimension();
+
         //On parcourt le tableau
-        for(int i=0; i<plateau.getDimension(); i++)
+        for(int i=0; i<boardDimension; i++)
         {
-            for(int j=0; j<plateau.getDimension(); j++)
+            for(int j=0; j<boardDimension; j++)
             {
                 //Si la couleur correspond au joueur adverse
-                if (matricePlateau[i][j] == getOppositeCouleur(couleur))
+                if (matricePlateau[i][j] == oppositeColor)
                 {
                     //On l'ajoute au tableau
                     tabCouleurAdverse.add(new Coup(i, j));
