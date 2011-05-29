@@ -10,16 +10,16 @@ import java.util.Random;
  *
  * @author andre
  */
-public class MaClasseMatricePlateau {
+public class InfoMatricePlateau {
 
     private Couleur[][] matricePlateau;
     private float valHeuristique;
 
-    public MaClasseMatricePlateau()
+    public InfoMatricePlateau()
     {
     }
 
-    public MaClasseMatricePlateau(Couleur[][] matricePlateau)
+    public InfoMatricePlateau(Couleur[][] matricePlateau)
     {
         this.matricePlateau = matricePlateau;
     }
