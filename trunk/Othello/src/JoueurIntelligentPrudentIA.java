@@ -31,7 +31,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                 chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
 
         // for tests
-        arbre = buildArbre(2, 3);
+        arbre = buildArbre(2);
 
         Coup coup = null;
         return coup;
@@ -43,7 +43,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
      * TODO: remove the largeur parameter
      * TODO: faire le propre dans la construction de l'arbre
      */
-    public ArbreNaire<InfoMatricePlateau> buildArbre(int profondeur, int largeur)
+    public ArbreNaire<InfoMatricePlateau> buildArbre(int profondeur)
     {
         // TODO: init plateau with the correct plateau
         // Plateau testPlateau = this.getPlateau(); // = new Plateau();
@@ -74,8 +74,8 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     {
         InfoMatricePlateau infoMatricePlateau;
 
-        Couleur[][] matricePlateau =
-                new Couleur[plateau.getDimension()][plateau.getDimension()];
+        Couleur[][] matricePlateau = arbre.getItem().getMatricePlateau();
+                // new Couleur[plateau.getDimension()][plateau.getDimension()];
         // utilisee pour jouer les coups des fils
         Couleur[][] tmpMatricePlateau;
         
