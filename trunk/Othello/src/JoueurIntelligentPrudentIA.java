@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import tadarbrenaire.ArbreNaire;
 import tadarbrenaire.MinMax;
+import tadarbrenaire.Noeud;
 
 /*
  * Ce joueur automatique se contente de joueur un coup aleatoire parmis
@@ -29,7 +30,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         System.out.println("Coup possible : ");
         ArbreNaire<InfoMatricePlateau> arbre;
         MinMax<InfoMatricePlateau> minMaxInfoMatricePlateau;
-        InfoMatricePlateau infoMatricePlateau;
+        Noeud<InfoMatricePlateau> node;
         
         ArrayList<Coup> coupPossible =
                 chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
@@ -39,7 +40,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
 
         minMaxInfoMatricePlateau = new MinMax<InfoMatricePlateau>();
 
-        infoMatricePlateau = minMaxInfoMatricePlateau.minMax(arbre.racine);
+        node = minMaxInfoMatricePlateau.minMaxNode(arbre.racine);
 
         Coup coup = null;
         return coup;
