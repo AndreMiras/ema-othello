@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 import tadarbrenaire.ArbreNaire;
+import tadarbrenaire.MinMax;
 
 /*
  * Ce joueur automatique se contente de joueur un coup aleatoire parmis
@@ -27,11 +28,18 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     {
         System.out.println("Coup possible : ");
         ArbreNaire<InfoMatricePlateau> arbre;
+        MinMax<InfoMatricePlateau> minMaxInfoMatricePlateau;
+        InfoMatricePlateau infoMatricePlateau;
+        
         ArrayList<Coup> coupPossible =
                 chercheCoupPossible(this.getPlateau().getMatricePlateau(), this.getCouleur());
 
         // for tests
         arbre = buildArbre(2);
+
+        minMaxInfoMatricePlateau = new MinMax<InfoMatricePlateau>();
+
+        infoMatricePlateau = minMaxInfoMatricePlateau.minMax(arbre.racine);
 
         Coup coup = null;
         return coup;
@@ -57,7 +65,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         // ArbreNaire<MaClassePlateau> a = new ArbreNaire<MaClassePlateau>(maClasse);
 
         InfoMatricePlateau infoMatricePlateau =
-                new InfoMatricePlateau(matricePlateau, this.getCouleur());
+                new InfoMatricePlateau(matricePlateau, this.getCouleur(), null);
         ArbreNaire<InfoMatricePlateau> arbre =
                 new ArbreNaire<InfoMatricePlateau>(infoMatricePlateau);
 
@@ -100,7 +108,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                         this.getCouleur();
                 // TODO: il faut changer de couleur un coup sur deux
                 infoMatricePlateau =
-                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur());
+                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
                 // tmpMaClasse.setValRandomHeuristique();
                 arbre.addFils(infoMatricePlateau);
             }
@@ -116,7 +124,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
 
                 // TODO: il faut changer de couleur un coup sur deux
                 infoMatricePlateau =
-                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur());
+                        new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
                 arbre.addFils(infoMatricePlateau);
                 arbre.goToFils(i);
                 buildArbreRec2(arbre, profondeur - 1);

@@ -24,15 +24,17 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
     private Float valHeuristique;
 
     private Couleur color;
+    private Coup coup;
 
     public InfoMatricePlateau()
     {
     }
 
-    public InfoMatricePlateau(Couleur[][] matricePlateau, Couleur color)
+    public InfoMatricePlateau(Couleur[][] matricePlateau, Couleur color, Coup coup)
     {
         this.matricePlateau = matricePlateau;
         this.color = color;
+        this.coup = coup;
     }
 
 
