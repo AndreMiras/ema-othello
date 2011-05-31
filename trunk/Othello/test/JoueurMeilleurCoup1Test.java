@@ -56,7 +56,7 @@ public class JoueurMeilleurCoup1Test {
             {Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
         };
 
-        JoueurMeilleurCoup1 instance = new JoueurMeilleurCoup1(couleur, plateau, TypeJoueur.HUMAIN);
+        JoueurMeilleurCoup1 instance = new JoueurMeilleurCoup1(couleur, plateau);
 
         /*
          * Deux meilleur coup immediats sont en faite possible
@@ -96,7 +96,7 @@ public class JoueurMeilleurCoup1Test {
             {Couleur.VIDE, Couleur.VIDE, Couleur.NOIR, Couleur.NOIR, Couleur.NOIR, Couleur.VIDE, Couleur.VIDE, Couleur.VIDE}
         };
 
-        JoueurMeilleurCoup1 instance = new JoueurMeilleurCoup1(couleur, plateau, TypeJoueur.HUMAIN);
+        JoueurMeilleurCoup1 instance = new JoueurMeilleurCoup1(couleur, plateau);
 
         /*
          * Le meilleur coup devrait etre celui de la case 1,6 qui retourne 5 pions
