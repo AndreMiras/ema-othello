@@ -23,9 +23,21 @@ public class MinMax<T>
      */
     public Noeud<T> maxNode(ArrayList<Noeud<T>> tab)
     {
-        Comparator comparator = Collections.reverseOrder();
-        Collections.sort(tab, comparator);
-        return tab.get(0);
+        //Comparator comparator = Collections.reverseOrder();
+        //Collections.sort(tab, comparator);
+        Noeud<T> noeudAretourner = tab.get(0);
+        int flag;
+        for(int i=1; i<tab.size(); i++)
+        {
+            flag = tab.get(i).compareTo(noeudAretourner);
+            if (flag > 0 )
+            {
+                noeudAretourner = tab.get(i);
+            }
+
+        }     
+                
+        return noeudAretourner;
     }
 
     /**
@@ -35,10 +47,26 @@ public class MinMax<T>
      */
     public Noeud<T> minNode(ArrayList<Noeud<T>> tab)
     {
-        Comparator comparator = Collections.reverseOrder();
-        Collections.sort(tab, comparator);
-        return tab.get(tab.size() - 1);
+        //Comparator comparator = Collections.reverseOrder();
+        //Collections.sort(tab, comparator);
+        //return tab.get(tab.size() - 1);
+        Noeud<T> noeudAretourner = tab.get(0);
+        int flag;
+        for(int i=1; i<tab.size(); i++)
+        {
+            flag = tab.get(i).compareTo(noeudAretourner);
+            if (flag < 0 )
+            {
+                noeudAretourner = tab.get(i);
+            }
+
+        }     
+                
+        return noeudAretourner;
     }
+        
+        
+    
 
     private Noeud<T> valMaxNode(Noeud<T> noeud)
     {
