@@ -31,7 +31,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
     {
         //Tableau dans lequel on va stockée les pions de l'adversaire
         ArrayList<Coup> tabCouleurAdverse = new ArrayList<Coup>();
-        Couleur oppositeColor = getOppositeCouleur(couleur);
+        Couleur oppositeColor = Helper.getOppositeCouleur(couleur);
         int boardDimension = plateau.getDimension();
 
         //On parcourt le tableau
@@ -261,7 +261,7 @@ abstract class AbstractJoueur implements InterfaceJoueur
     
     private ArrayList<Coup> chercheCouleurAdverseAutour(Couleur[][] matricePlateau, Couleur couleur, Coup coup)
     {
-        Couleur opponentColor = getOppositeCouleur(couleur);
+        Couleur opponentColor = Helper.getOppositeCouleur(couleur);
 
         return getNeighborWithColor(matricePlateau, opponentColor, coup);
     }
@@ -277,15 +277,6 @@ abstract class AbstractJoueur implements InterfaceJoueur
     public Couleur getCouleur()
     {
         return couleur;
-    }
-
-    public Couleur getOppositeCouleur(Couleur color)
-    {
-        if (color == Couleur.BLANC)
-        {
-            return Couleur.NOIR;
-        }
-        return Couleur.BLANC;
     }
 
     public Plateau getPlateau()
