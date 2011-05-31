@@ -11,12 +11,12 @@ import tadarbrenaire.Noeud;
 
 
 
-public class JoueurIntelligentPrudentIA extends AbstractJoueur
+public class JoueurIntelligentPrudentIA extends AbstractJoueurIA
 {
 
-    public JoueurIntelligentPrudentIA(Couleur couleur, Plateau plateau, TypeJoueur typeJoueur)
+    public JoueurIntelligentPrudentIA(Couleur couleur, Plateau plateau)
     {
-        super(couleur, plateau, typeJoueur);
+        super(couleur, plateau);
     }
 
     /*

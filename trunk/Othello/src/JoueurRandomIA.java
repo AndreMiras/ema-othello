@@ -12,13 +12,13 @@ import java.util.Random;
  * les coups possibles
  */
 
-public class JoueurRandomIA extends AbstractJoueur
+public class JoueurRandomIA extends AbstractJoueurIA
 {
 
 
-    public JoueurRandomIA(Couleur couleur, Plateau plateau, TypeJoueur typeJoueur)
+    public JoueurRandomIA(Couleur couleur, Plateau plateau)
     {
-        super(couleur, plateau, typeJoueur);
+        super(couleur, plateau);
     }
 
     /*

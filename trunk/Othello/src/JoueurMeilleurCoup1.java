@@ -12,13 +12,13 @@ import java.util.ArrayList;
  * les coups possibles
  */
 
-public class JoueurMeilleurCoup1 extends AbstractJoueur
+public class JoueurMeilleurCoup1 extends AbstractJoueurIA
 {
 
 
-    public JoueurMeilleurCoup1(Couleur couleur, Plateau plateau, TypeJoueur typeJoueur)
+    public JoueurMeilleurCoup1(Couleur couleur, Plateau plateau)
     {
-        super(couleur, plateau, typeJoueur);
+        super(couleur, plateau);
     }
 
     /*
