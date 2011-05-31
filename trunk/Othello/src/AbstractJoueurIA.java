@@ -5,7 +5,7 @@
 
 /**
  * 
- * Cette classe permet de mettre en commun le code de toutes les IA
+ * Cette classe permet de mettre par défault le type Automate pour toutes les IA
  */
 abstract public class AbstractJoueurIA extends AbstractJoueur {
 

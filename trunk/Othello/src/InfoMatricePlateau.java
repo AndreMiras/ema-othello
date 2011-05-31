@@ -3,6 +3,11 @@
  * Author : Miras Andre & Tomio Nicolas
  */
 
+
+/**
+ * Cette classe correspond aux informations stockées dans un noeud
+ */
+
 /**
  * cette classe gère l'heuristique de suivante :
  * récupère la différence des pionds retournés (pions - pionsAdversaire)

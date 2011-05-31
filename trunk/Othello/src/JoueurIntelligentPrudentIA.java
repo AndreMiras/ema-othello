@@ -66,13 +66,12 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueurIA
     }
 
     /**
-     * Fonction pour créer la racine de l'arbre maClasse et appel
-     * la fonction récursive
+     * Fonction pour créer la racine de l'arbre de type générique InfoMatricePlateau 
+     * et appel la fonction récursive
      * @param matricePlateau: la matrice plateau
      * @param profondeur: la profondeur de l'arbre
      * @param color: la couleur qui joue
-     * @return
-     * TODO: faire le propre dans la construction de l'arbre
+     * @return: l'arbre en question
      */
     public ArbreNaire<InfoMatricePlateau> buildArbre(Couleur[][] matricePlateau, int profondeur, Couleur color)
     {
@@ -104,7 +103,6 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueurIA
         int largeur2 = coupPossible.size();
 
         /* Feuille */
-        // TODO: the if and for statements are to be redone/removed to only be recursive
         if (profondeur == 1)
         {
             for (int i = 0; i < largeur2; i++)

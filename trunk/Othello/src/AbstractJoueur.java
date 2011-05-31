@@ -6,6 +6,10 @@ import java.util.ArrayList;
  * Author : Miras Andre & Tomio Nicolas
  */
 
+/**
+ * Dans la classe abstraite, AbstractJoueur, nous retrouvons deux fonction principales : chercheCoupPossible 
+ * et retournePions, et différentes petites fonction permettant la réalisation des deux principales.
+ */
 abstract class AbstractJoueur implements InterfaceJoueur
 {
 
