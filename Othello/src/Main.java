@@ -13,7 +13,7 @@ public class Main {
         // création d'un plateau
         Plateau plateau = new Plateau();
         //déclaration des joueurs
-        AbstractJoueur joueur1 = new JoueurMeilleurCoup1(Couleur.NOIR, plateau,TypeJoueur.AUTOMATE);
+        AbstractJoueur joueur1 = new JoueurMeilleurCoup1(Couleur.NOIR, plateau, TypeJoueur.AUTOMATE);
         // AbstractJoueur joueur1 = new JoueurRandomIA(Couleur.NOIR, plateau,TypeJoueur.AUTOMATE);
         // AbstractJoueur joueur1 = new JoueurMeilleurCoup1(Couleur.NOIR, plateau, TypeJoueur.HUMAIN);
         AbstractJoueur joueur2 = new JoueurIntelligentPrudentIA(Couleur.BLANC, plateau, TypeJoueur.AUTOMATE);
