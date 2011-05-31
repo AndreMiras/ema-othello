@@ -169,21 +169,22 @@ public class InterfaceAccueil extends javax.swing.JFrame {
 
         if (choixJoueur1.getSelectedItem() == "Humain")
         {
+            // TODO: fix this
             joueur1 = new JoueurMeilleurCoup1(couleurJoueur1, plateau,TypeJoueur.HUMAIN);
         }
         else if(choixJoueur1.getSelectedItem() == "Automate")
         {
             if(choixAutomateJoueur1.getSelectedItem() == "Aléatoire")
             {
-                joueur1 = new JoueurRandomIA(couleurJoueur1, plateau,TypeJoueur.AUTOMATE);
+                joueur1 = new JoueurRandomIA(couleurJoueur1, plateau);
             }
             else if (choixAutomateJoueur1.getSelectedItem() == "Meilleur Coup")
             {
-                joueur1 = new JoueurMeilleurCoup1(couleurJoueur1, plateau,TypeJoueur.AUTOMATE);
+                joueur1 = new JoueurMeilleurCoup1(couleurJoueur1, plateau);
             }
             else if(choixAutomateJoueur1.getSelectedItem() == "Arbre")
             {
-                joueur1 = new JoueurIntelligentPrudentIA(couleurJoueur1, plateau,TypeJoueur.AUTOMATE);
+                joueur1 = new JoueurIntelligentPrudentIA(couleurJoueur1, plateau);
             }
         }
 
@@ -200,11 +201,11 @@ public class InterfaceAccueil extends javax.swing.JFrame {
         {
             if(choixAutomateJoueur2.getSelectedItem() == "Aléatoire")
             {
-                joueur2 = new JoueurRandomIA(couleurJoueur2, plateau,TypeJoueur.AUTOMATE);
+                joueur2 = new JoueurRandomIA(couleurJoueur2, plateau);
             }
             else if (choixAutomateJoueur2.getSelectedItem() == "Meilleur Coup")
             {
-                joueur2 = new JoueurMeilleurCoup1(couleurJoueur2, plateau,TypeJoueur.AUTOMATE);
+                joueur2 = new JoueurMeilleurCoup1(couleurJoueur2, plateau);
             }
             else if(choixAutomateJoueur2.getSelectedItem() == "Arbre")
             {
