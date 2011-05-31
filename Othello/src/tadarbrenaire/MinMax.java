@@ -30,7 +30,7 @@ public class MinMax<T>
         for(int i=1; i<tab.size(); i++)
         {
             flag = tab.get(i).compareTo(noeudAretourner);
-            if (flag > 0 )
+            if (flag >= 0 )
             {
                 noeudAretourner = tab.get(i);
             }
@@ -55,7 +55,7 @@ public class MinMax<T>
         for(int i=1; i<tab.size(); i++)
         {
             flag = tab.get(i).compareTo(noeudAretourner);
-            if (flag < 0 )
+            if (flag <= 0 )
             {
                 noeudAretourner = tab.get(i);
             }
