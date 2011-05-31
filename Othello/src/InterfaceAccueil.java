@@ -38,6 +38,8 @@ public class InterfaceAccueil extends javax.swing.JFrame {
         choixCouleurJoueur1 = new javax.swing.JComboBox();
         choixCouleurJoueur2 = new javax.swing.JComboBox();
         boutonJouer = new javax.swing.JButton();
+        choixProfondeurArbreJoueur1 = new javax.swing.JComboBox();
+        choixProfondeurArbreJoueur2 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +73,15 @@ public class InterfaceAccueil extends javax.swing.JFrame {
             }
         });
 
+        choixProfondeurArbreJoueur1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+
+        choixProfondeurArbreJoueur2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        choixProfondeurArbreJoueur2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choixProfondeurArbreJoueur2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,15 +93,19 @@ public class InterfaceAccueil extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(choixAutomateJoueur1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(choixJoueur1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(88, 88, 88)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(choixProfondeurArbreJoueur1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(choixCouleurJoueur2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3)
                     .addComponent(choixAutomateJoueur2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(choixJoueur2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(choixProfondeurArbreJoueur2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(184, Short.MAX_VALUE)
+                .addContainerGap(216, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(boutonJouer, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -115,7 +130,9 @@ public class InterfaceAccueil extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(choixAutomateJoueur1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(choixAutomateJoueur2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(choixAutomateJoueur2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(choixProfondeurArbreJoueur1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(choixProfondeurArbreJoueur2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(choixCouleurJoueur1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,7 +186,6 @@ public class InterfaceAccueil extends javax.swing.JFrame {
 
         if (choixJoueur1.getSelectedItem() == "Humain")
         {
-            // TODO: fix this
             joueur1 = new JoueurHumain(couleurJoueur1, plateau);
         }
         else if(choixJoueur1.getSelectedItem() == "Automate")
@@ -183,9 +199,8 @@ public class InterfaceAccueil extends javax.swing.JFrame {
                 joueur1 = new JoueurMeilleurCoup1(couleurJoueur1, plateau);
             }
             else if(choixAutomateJoueur1.getSelectedItem() == "Arbre")
-            {
-                // TODO: depth to be dynamic
-                joueur1 = new JoueurIntelligentPrudentIA(couleurJoueur1, plateau, 4);
+            {                
+                joueur1 = new JoueurIntelligentPrudentIA(couleurJoueur1, plateau, choixProfondeurArbreJoueur1.getSelectedIndex()+1);
             }
         }
 
@@ -210,8 +225,7 @@ public class InterfaceAccueil extends javax.swing.JFrame {
             }
             else if(choixAutomateJoueur2.getSelectedItem() == "Arbre")
             {
-                // TODO: depth to be dynamic
-                joueur1 = new JoueurIntelligentPrudentIA(couleurJoueur2, plateau, 4);
+                joueur2 = new JoueurIntelligentPrudentIA(couleurJoueur2, plateau, choixProfondeurArbreJoueur2.getSelectedIndex()+1);
             }
         }
 
@@ -240,6 +254,11 @@ public class InterfaceAccueil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_choixJoueur2ActionPerformed
 
+    private void choixProfondeurArbreJoueur2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_choixProfondeurArbreJoueur2ActionPerformed
+    {//GEN-HEADEREND:event_choixProfondeurArbreJoueur2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_choixProfondeurArbreJoueur2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -259,6 +278,8 @@ public class InterfaceAccueil extends javax.swing.JFrame {
     private javax.swing.JComboBox choixCouleurJoueur2;
     private javax.swing.JComboBox choixJoueur1;
     private javax.swing.JComboBox choixJoueur2;
+    private javax.swing.JComboBox choixProfondeurArbreJoueur1;
+    private javax.swing.JComboBox choixProfondeurArbreJoueur2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
