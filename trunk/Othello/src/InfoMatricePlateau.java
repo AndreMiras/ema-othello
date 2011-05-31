@@ -4,13 +4,18 @@
  */
 
 /**
- * cette classe gère l'heuristique de base suivante :
- * valHeuristique = TODO: metttre à jour avec la véritable heuristique
+ * cette classe gère l'heuristique de suivante :
+ * récupère la différence des pionds retournés (pions - pionsAdversaire)
+ * le tout pondéré par un poid sur chaque case
  */
 public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
 
     private int cornerHeuristicValue = 9;
     private int hedgeHeuristicValue = 3;
+
+    /*
+     * matrice de pondération, à chaque case un poid
+     */
     private int ponderationMatrice[][] =
     {
         {cornerHeuristicValue, 1, 1, 1, 1, 1, 1,  cornerHeuristicValue},
@@ -26,13 +31,12 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
     
     protected Couleur[][] matricePlateau;
     /*
-     * TODO: mettre a jour avec la véritable heuristique
-     * La valeur heuristique correspond au rapport du nombre de pions retournes
-     * sur le nombre de pions total.
-     * Cette valeur est calculee a partir de la matrice Plateau puis conservee
-     * pour ne pas avoir a refaire le calcul a chaque fois.
-     * Aussi la valeur heuristique n'est pas calculée dans le constructeur
-     * pour limiter le temps de construction de l'arbre
+     * Cette valeur d'heuristique est calculee a partir de la matrice Plateau
+     * puis conservee pour ne pas avoir a refaire le calcul a chaque fois.
+     * Aussi la valeur heuristique n'est pas calculee dans le constructeur
+     * pour reduire le temps de construction de l'arbre, en revanche
+     * elle est calculee au moment du parcours de l'arbre par le minMax
+     * voir getValHeuristique()
      */
     private Integer valHeuristique;
 
@@ -66,7 +70,7 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
 
     /**
      * retourne la valeur heuristique si celle-ci a deja ete calculee, sinon
-     * calcul, enregistre puis retourne la valeur heuristique
+     * calcule, enregistre puis retourne la valeur heuristique
      * @return: la valeur heuristique
      */
     public Integer getValHeuristique()
