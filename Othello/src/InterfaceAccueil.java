@@ -170,7 +170,7 @@ public class InterfaceAccueil extends javax.swing.JFrame {
         if (choixJoueur1.getSelectedItem() == "Humain")
         {
             // TODO: fix this
-            joueur1 = new HumanPlayer(couleurJoueur1, plateau);
+            joueur1 = new JoueurHumain(couleurJoueur1, plateau);
         }
         else if(choixJoueur1.getSelectedItem() == "Automate")
         {
@@ -195,7 +195,7 @@ public class InterfaceAccueil extends javax.swing.JFrame {
           */
         if (choixJoueur2.getSelectedItem() == "Humain")
         {
-            joueur2 = new HumanPlayer(couleurJoueur2, plateau);
+            joueur2 = new JoueurHumain(couleurJoueur2, plateau);
         }
         else if(choixJoueur2.getSelectedItem() == "Automate")
         {

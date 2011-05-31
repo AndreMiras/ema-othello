@@ -4,9 +4,9 @@
  */
 
 
-public class HumanPlayer extends AbstractJoueur {
+public class JoueurHumain extends AbstractJoueur {
 
-    public HumanPlayer(Couleur couleur, Plateau plateau)
+    public JoueurHumain(Couleur couleur, Plateau plateau)
     {
         super(couleur, plateau, TypeJoueur.HUMAIN);
     }
