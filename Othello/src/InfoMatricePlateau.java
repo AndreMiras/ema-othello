@@ -2,23 +2,28 @@
  * InfoMatricePlateau.java
  * Author : Miras Andre & Tomio Nicolas
  */
+
+/**
+ * cette classe gère l'heuristique de base suivante :
+ * valHeuristique = TODO: metttre à jour avec la véritable heuristique
+ */
 public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
     
-    private Couleur[][] matricePlateau;
+    protected Couleur[][] matricePlateau;
     /*
+     * TODO: mettre a jour avec la véritable heuristique
      * La valeur heuristique correspond au rapport du nombre de pions retournes
      * sur le nombre de pions total.
      * Cette valeur est calculee a partir de la matrice Plateau puis conservee
      * pour ne pas avoir a refaire le calcul a chaque fois.
+     * Aussi la valeur heuristique n'est pas calculée dans le constructeur
+     * pour limiter le temps de construction de l'arbre
      */
     private Integer valHeuristique;
 
-    private Couleur color;
+    protected Couleur color;
     private Coup coup;
 
-    public InfoMatricePlateau()
-    {
-    }
 
     public InfoMatricePlateau(Couleur[][] matricePlateau, Couleur color, Coup coup)
     {
@@ -70,7 +75,7 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
         int totalPieces = 0;
         int opponentTotalPieces = 0;
         Couleur opponentColor = Helper.getOppositeCouleur(color);
-        
+
         for(int row = 0; row < matricePlateau.length; row++)
         {
            for(int col = 0; col < matricePlateau[row].length; col++)
@@ -85,7 +90,7 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
                }
            }
         }
-        
+
         return totalPieces - opponentTotalPieces;
     }
 
