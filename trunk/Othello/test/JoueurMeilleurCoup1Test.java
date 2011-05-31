@@ -108,19 +108,4 @@ public class JoueurMeilleurCoup1Test {
         assertTrue(Helper.coupEqual(result, expResult));
     }
 
-    /**
-     * Test of joue method, of class JoueurMeilleurCoup1.
-     */
-    // @Test
-    public void testJoue()
-    {
-        System.out.println("joue");
-        JoueurMeilleurCoup1 instance = null;
-        Coup expResult = null;
-        Coup result = instance.joue();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
 }

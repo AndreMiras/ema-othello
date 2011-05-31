@@ -40,20 +40,7 @@ public class JoueurIntelligentPrudentIATest {
     public void tearDown() {
     }
 
-    /**
-     * Test of joue method, of class JoueurIntelligentPrudentIA.
-     */
-    // @Test
-    public void testJoue()
-    {
-        System.out.println("joue");
-        JoueurIntelligentPrudentIA instance = null;
-        Coup expResult = null;
-        Coup result = instance.joue();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+
 
     /**
      * Test of buildArbre method, of class JoueurIntelligentPrudentIA.
@@ -85,7 +72,7 @@ public class JoueurIntelligentPrudentIATest {
                 new MinMax<InfoMatricePlateau>();
         nodeMinMax = minMaxInfoMatricePlateau.minMaxNode(arbre.racine);
 
-        // TODO: test tres basique a ameliorer par la suite
+
         assertNotNull(nodeMinMax);
     }
 
@@ -118,7 +105,6 @@ public class JoueurIntelligentPrudentIATest {
                 new MinMax<InfoMatricePlateau>();
         nodeMinMax = minMaxInfoMatricePlateau.minMaxNode(arbre.racine);
 
-        // TODO: test tres basique a ameliorer par la suite
         assertNotNull(nodeMinMax);
     }
 
@@ -151,7 +137,6 @@ public class JoueurIntelligentPrudentIATest {
                 new MinMax<InfoMatricePlateau>();
         nodeMinMax = minMaxInfoMatricePlateau.minMaxNode(arbre.racine);
 
-        // TODO: test tres basique a ameliorer par la suite
         assertNotNull(nodeMinMax);
     }
 

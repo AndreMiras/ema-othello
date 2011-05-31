@@ -37,20 +37,6 @@ public class AbstractJoueurTest
     {
     }
 
-    /**
-     * Test of joue method, of class AbstractJoueur.
-     */
-    // @Test
-    public void testJoue()
-    {
-        System.out.println("joue");
-        AbstractJoueur instance = null;
-        Coup expResult = null;
-        Coup result = instance.joue();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of chercheCoupPossible method, of class AbstractJoueur.
@@ -239,50 +225,6 @@ public class AbstractJoueurTest
         
     }
 
-    /**
-     * Test of getType method, of class AbstractJoueur.
-     */
-    // @Test
-    public void testGetType()
-    {
-        System.out.println("getType");
-        AbstractJoueur instance = null;
-        TypeJoueur expResult = null;
-        TypeJoueur result = instance.getType();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCouleur method, of class AbstractJoueur.
-     */
-    // @Test
-    public void testGetCouleur()
-    {
-        System.out.println("getCouleur");
-        AbstractJoueur instance = null;
-        Couleur expResult = null;
-        Couleur result = instance.getCouleur();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPlateau method, of class AbstractJoueur.
-     */
-    // @Test
-    public void testGetPlateau()
-    {
-        System.out.println("getPlateau");
-        AbstractJoueur instance = null;
-        Plateau expResult = null;
-        Plateau result = instance.getPlateau();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     public class AbstractJoueurImpl extends AbstractJoueur
     {
