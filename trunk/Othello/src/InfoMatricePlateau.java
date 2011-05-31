@@ -3,11 +3,6 @@
  * Author : Miras Andre & Tomio Nicolas
  */
 public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
-
-    /*
-     * nombre de case total dans le jeu
-     */
-    private int TOTAL_CASE = 8*8;
     
     private Couleur[][] matricePlateau;
     /*
@@ -72,18 +67,26 @@ public class InfoMatricePlateau implements Comparable<InfoMatricePlateau>  {
      */
     private Integer computeHeuristicValue()
     {
-        int totalPion = 0;
+        int totalPieces = 0;
+        int opponentTotalPieces = 0;
+        Couleur opponentColor = Helper.getOppositeCouleur(color);
+        
         for(int row = 0; row < matricePlateau.length; row++)
         {
            for(int col = 0; col < matricePlateau[row].length; col++)
            {
                if(matricePlateau[row][col] == color)
                {
-                   totalPion++;
+                   totalPieces++;
+               }
+               else if (matricePlateau[row][col] == opponentColor)
+               {
+                   opponentTotalPieces++;
                }
            }
         }
-        return totalPion;
+        
+        return totalPieces - opponentTotalPieces;
     }
 
     public int compareTo(InfoMatricePlateau t)

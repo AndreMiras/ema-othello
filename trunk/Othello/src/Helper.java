@@ -46,5 +46,16 @@ public class Helper {
         return "(" + coup.getLigne() + "," + coup.getColonne() + ")";
     }
 
+
+
+    public static Couleur getOppositeCouleur(Couleur color)
+    {
+        if (color == Couleur.BLANC)
+        {
+            return Couleur.NOIR;
+        }
+        return Couleur.BLANC;
+    }
+
     
 }

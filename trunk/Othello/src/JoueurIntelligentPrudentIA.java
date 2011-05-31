@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Random;
 import tadarbrenaire.ArbreNaire;
 import tadarbrenaire.MinMax;
 import tadarbrenaire.Noeud;
@@ -26,7 +25,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
     @Override
     public Coup joue()
     {
-        int depth = 2;
+        int depth = 4;
         ArbreNaire<InfoMatricePlateau> arbre;
         MinMax<InfoMatricePlateau> minMaxInfoMatricePlateau;
         Noeud<InfoMatricePlateau> nodeMinMax;
@@ -65,10 +64,13 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
         return coup;
     }
 
-    /*
+    /**
      * Fonction pour créer la racine de l'arbre maClasse et appel
      * la fonction récursive
-     * TODO: remove the largeur parameter
+     * @param matricePlateau: la matrice plateau
+     * @param profondeur: la profondeur de l'arbre
+     * @param color: la couleur qui joue
+     * @return
      * TODO: faire le propre dans la construction de l'arbre
      */
     public ArbreNaire<InfoMatricePlateau> buildArbre(Couleur[][] matricePlateau, int profondeur, Couleur color)
@@ -135,7 +137,7 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueur
                         new InfoMatricePlateau(tmpMatricePlateau, this.getCouleur(), coupPossible.get(i));
                 arbre.addFils(infoMatricePlateau);
                 arbre.goToFils(i);
-                buildArbreRec2(arbre, profondeur - 1, getOppositeCouleur(color));
+                buildArbreRec2(arbre, profondeur - 1, Helper.getOppositeCouleur(color));
                 arbre.goToPere();
             }
         }
