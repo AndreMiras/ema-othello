@@ -209,7 +209,7 @@ public class InterfaceAccueil extends javax.swing.JFrame {
             }
             else if(choixAutomateJoueur2.getSelectedItem() == "Arbre")
             {
-                joueur2 = new JoueurIntelligentPrudentIA(couleurJoueur2, plateau,TypeJoueur.AUTOMATE);
+                joueur2 = new JoueurIntelligentPrudentIA(couleurJoueur2, plateau);
             }
         }
 
