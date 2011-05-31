@@ -76,7 +76,7 @@ public class JoueurIntelligentPrudentIATest {
         Plateau plateau = new Plateau();
         Couleur color = Couleur.BLANC;
         JoueurIntelligentPrudentIA instance =
-                new JoueurIntelligentPrudentIA(color, plateau);
+                new JoueurIntelligentPrudentIA(color, plateau, 4);
         ArbreNaire expResult = null;
         ArbreNaire arbre = instance.buildArbre(matricePlateau, profondeur, color);
 
@@ -110,7 +110,7 @@ public class JoueurIntelligentPrudentIATest {
         Plateau plateau = new Plateau();
         Couleur color = Couleur.BLANC;
         JoueurIntelligentPrudentIA instance =
-                new JoueurIntelligentPrudentIA(color, plateau);
+                new JoueurIntelligentPrudentIA(color, plateau, 4);
         ArbreNaire arbre = instance.buildArbre(matricePlateau, profondeur, color);
 
         Noeud<InfoMatricePlateau> nodeMinMax;
@@ -143,7 +143,7 @@ public class JoueurIntelligentPrudentIATest {
         Plateau plateau = new Plateau();
         Couleur color = Couleur.BLANC;
         JoueurIntelligentPrudentIA instance =
-                new JoueurIntelligentPrudentIA(color, plateau);
+                new JoueurIntelligentPrudentIA(color, plateau, 4);
         ArbreNaire arbre = instance.buildArbre(matricePlateau, profondeur, color);
 
         Noeud<InfoMatricePlateau> nodeMinMax;

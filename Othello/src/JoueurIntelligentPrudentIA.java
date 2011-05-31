@@ -13,10 +13,12 @@ import tadarbrenaire.Noeud;
 
 public class JoueurIntelligentPrudentIA extends AbstractJoueurIA
 {
+    private int depth;
 
-    public JoueurIntelligentPrudentIA(Couleur couleur, Plateau plateau)
+    public JoueurIntelligentPrudentIA(Couleur couleur, Plateau plateau, int depth)
     {
         super(couleur, plateau);
+        this.depth = depth;
     }
 
     /*
@@ -25,7 +27,6 @@ public class JoueurIntelligentPrudentIA extends AbstractJoueurIA
     @Override
     public Coup joue()
     {
-        int depth = 4;
         ArbreNaire<InfoMatricePlateau> arbre;
         MinMax<InfoMatricePlateau> minMaxInfoMatricePlateau;
         Noeud<InfoMatricePlateau> nodeMinMax;

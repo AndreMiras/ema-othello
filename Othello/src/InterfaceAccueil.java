@@ -184,7 +184,8 @@ public class InterfaceAccueil extends javax.swing.JFrame {
             }
             else if(choixAutomateJoueur1.getSelectedItem() == "Arbre")
             {
-                joueur1 = new JoueurIntelligentPrudentIA(couleurJoueur1, plateau);
+                // TODO: depth to be dynamic
+                joueur1 = new JoueurIntelligentPrudentIA(couleurJoueur1, plateau, 4);
             }
         }
 
@@ -209,7 +210,8 @@ public class InterfaceAccueil extends javax.swing.JFrame {
             }
             else if(choixAutomateJoueur2.getSelectedItem() == "Arbre")
             {
-                joueur2 = new JoueurIntelligentPrudentIA(couleurJoueur2, plateau);
+                // TODO: depth to be dynamic
+                joueur1 = new JoueurIntelligentPrudentIA(couleurJoueur2, plateau, 4);
             }
         }
 
