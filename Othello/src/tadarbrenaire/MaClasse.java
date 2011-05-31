@@ -7,6 +7,10 @@ import java.util.Random;
  * Maclasse.java
  * Author : Miras Andre & Tomio Nicolas
  */
+
+/*
+ * Classe du TP sur les arbres
+ */
 public class MaClasse implements Comparable<MaClasse> {
 
     private int ident;

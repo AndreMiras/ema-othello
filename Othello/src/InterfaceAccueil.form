@@ -127,9 +127,6 @@
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="choixJoueur2ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="choixAutomateJoueur1">
       <Properties>
@@ -206,9 +203,6 @@
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="choixProfondeurArbreJoueur2ActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

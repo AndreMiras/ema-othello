@@ -52,11 +52,6 @@ public class InterfaceAccueil extends javax.swing.JFrame {
         choixJoueur1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Automate", "Humain" }));
 
         choixJoueur2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Automate", "Humain" }));
-        choixJoueur2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                choixJoueur2ActionPerformed(evt);
-            }
-        });
 
         choixAutomateJoueur1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aléatoire", "Meilleur Coup", "Arbre" }));
 
@@ -76,11 +71,6 @@ public class InterfaceAccueil extends javax.swing.JFrame {
         choixProfondeurArbreJoueur1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
 
         choixProfondeurArbreJoueur2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
-        choixProfondeurArbreJoueur2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                choixProfondeurArbreJoueur2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,15 +239,6 @@ public class InterfaceAccueil extends javax.swing.JFrame {
          }
 
     }//GEN-LAST:event_boutonJouerActionPerformed
-
-    private void choixJoueur2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choixJoueur2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_choixJoueur2ActionPerformed
-
-    private void choixProfondeurArbreJoueur2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_choixProfondeurArbreJoueur2ActionPerformed
-    {//GEN-HEADEREND:event_choixProfondeurArbreJoueur2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_choixProfondeurArbreJoueur2ActionPerformed
 
     /**
     * @param args the command line arguments

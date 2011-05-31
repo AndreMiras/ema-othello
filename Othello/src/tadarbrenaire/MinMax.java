@@ -9,6 +9,11 @@ import java.util.Comparator;
  * MinMax.java
  * Author : Miras Andre & Tomio Nicolas
  */
+
+/*
+ * Classe mettant en oeuvre l'algorithme du minmax sur du générique implémentant le Comparable
+ */
+
 public class MinMax<T>
 {
     

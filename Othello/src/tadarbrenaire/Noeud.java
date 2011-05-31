@@ -6,6 +6,11 @@ import java.util.ArrayList;
  * Noeud.java
  * Author : Miras Andre & Tomio Nicolas
  */
+
+/**
+ * Noeud gérant une information générique pouvant être comparable. 
+ */
+
 public class Noeud<T> implements Comparable<Noeud> {
 
     private T info;

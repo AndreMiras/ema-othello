@@ -5,6 +5,12 @@ import java.util.ArrayList;
  * Helper.java
  * Author : Miras Andre & Tomio Nicolas
  */
+
+/**
+ * Cette classe permet de faire des comparaisons sur des coups
+ * et de trouver la couleur adverse
+ * 
+ */
 public class Helper {
 
         /**
